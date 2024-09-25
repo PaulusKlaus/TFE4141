@@ -3,7 +3,8 @@
 #include <string.h>
 
 #define MAX_BITS 64
-typedef unsigned long long bits_64;
+typedef unsigned _BitInt(256) bits_64;
+//typedef unsigned long long bits_64;
 
 bits_64 rsa_encrypt(bits_64 M, bits_64 e, bits_64 n);
 bits_64 rsa_decrypt(bits_64 C, bits_64 d, bits_64 n);
