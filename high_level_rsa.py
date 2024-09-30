@@ -24,7 +24,7 @@ def modular_exponentiation(base, exponent, modulus):
     Efficient modular exponentiation using the square-and-multiply algorithm.
     This function computes (base^exponent) % modulus.
     """
-    if (base >= modulus):
+    if (base >= modulus):   # Modulus defines the maximum value of base
         return modular_exponentiation(base - modulus, exponent, modulus)
 
     result = 1
@@ -45,7 +45,7 @@ n = p * q
 phi = (p - 1) * (q - 1)
 e = 999331
 d = pow(e, -1, phi)
-print(f'Private key (n, d): ({n}, {d})')
+print(f'\nPrivate key (n, d): ({n}, {d})')
 print(f'Public key (n, e): ({n}, {e})')
 
 # Message to encrypt
@@ -54,11 +54,14 @@ message_as_int = [int.from_bytes(char.encode(), 'big') for char in message]
 print(f'Original message: {message}')
 
 ciphertext = []
+numberOfEncryptions = 0
 
 for number in message_as_int:
     ciphertext.append(modular_exponentiation(number, e, n))
+    numberOfEncryptions += 1
 
-print(f'Encrypted message: {ciphertext}')
+print(f'\nEncrypted message: {ciphertext}')
+print(f'\nNumber of encryptions: {numberOfEncryptions}')
 
 decrypted_message = ""
 
