@@ -98,7 +98,7 @@ begin
                     end if;
 
                 when PROCESSING =>
-                    if bit_index < C_block_size then -- Iterate over bits of exponent from right to left
+                    if bit_index < 5 then -- Iterate over bits of exponent from right to left
                         if exponent(bit_index) = '1' then
                             result_reg <= modular_multiply(result_reg, base, modulus_val);
                         end if;
@@ -111,8 +111,9 @@ begin
                     end if;
 
                 when OUTPUT =>
-                    valid_out <= '1'; -- Indicate valid output and wait 1 clock cycle
-                    if (ready_out = '1') then
+                    if(valid_out = '0') then
+                        valid_out <= '1'; -- Indicate valid output and wait 1 clock cycle
+                    elsif (ready_out = '1') then
                         result <= result_reg; -- Output the result
                         state <= INIT; -- Reset to initial state after processing is complete
                         ready_in <= '1';

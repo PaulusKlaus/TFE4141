@@ -59,10 +59,10 @@ begin
 		constant modulus1 : unsigned(C_block_size-1 downto 0) := to_unsigned(13, C_block_size);
 		constant expected_result1 : unsigned(C_block_size-1 downto 0) := to_unsigned(8, C_block_size); -- (5^3 mod 13) = 8
 
-		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(0, C_block_size);
+		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(6, C_block_size);
 		constant exponent2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size);
 		constant modulus2 : unsigned(C_block_size-1 downto 0) := to_unsigned(17, C_block_size);
-		constant expected_result2 : unsigned(C_block_size-1 downto 0) := to_unsigned(0, C_block_size); -- (0^4 mod 17) = 0
+		constant expected_result2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size); -- (6^4 mod 17) = 4
 
 	begin
 		-- Initial reset
@@ -85,7 +85,7 @@ begin
 		assert result = std_logic_vector(expected_result1)
 			report "Test case 1 failed: (5^3 mod 13) should be 8" severity error;
 
-		-- Test Case 2: (0^4 mod 17)
+		-- Test Case 2: (6^4 mod 17)
 		message <= std_logic_vector(base2);
 		key <= std_logic_vector(exponent2);
 		modulus <= std_logic_vector(modulus2);
@@ -98,7 +98,7 @@ begin
 		wait for clk_period;
 		-- Check the result
 		assert result = std_logic_vector(expected_result2)
-			report "Test case 2 failed: (0^4 mod 17) should be 0" severity error;
+			report "Test case 2 failed: (6^4 mod 17) should be 4" severity error;
 
 		-- End simulation
 		wait;
