@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity exponentiation is
 	generic (
@@ -30,37 +31,48 @@ entity exponentiation is
 	);
 end exponentiation;
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
-entity modular_exponentiation is
-    generic (
-        C_block_size : integer := 256
-    );
-    port (
-        valid_in    : in STD_LOGIC;
-        ready_in    : out STD_LOGIC;
-        message      : in STD_LOGIC_VECTOR (C_block_size-1 downto 0); -- base
-        key          : in STD_LOGIC_VECTOR (C_block_size-1 downto 0); -- exponent
-        ready_out    : in STD_LOGIC;
-        valid_out    : out STD_LOGIC;
-        result       : out STD_LOGIC_VECTOR(C_block_size-1 downto 0); -- output result
-        modulus      : in STD_LOGIC_VECTOR(C_block_size-1 downto 0); -- modulus
-        clk          : in STD_LOGIC;
-        reset_n      : in STD_LOGIC
-    );
-end modular_exponentiation;
 
-architecture expBehave of modular_exponentiation is
+architecture expBehave of exponentiation is
     signal base        : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal exponent    : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal modulus_val : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal result_reg  : STD_LOGIC_VECTOR(C_block_size-1 downto 0) := (others => '0');
     signal state       : integer := 0; -- State variable for FSM
     signal bit_index   : integer := 0; -- Index for the current bit of the exponent
-begin
 
+    -- Declare the function before the 'begin'
+    function modular_multiply(a, b, n : STD_LOGIC_VECTOR) return STD_LOGIC_VECTOR is
+        variable a_reg, b_reg, n_reg, res_reg : unsigned(a'range); -- Use the range of 'a' for sizing
+        
+        
+    begin
+        -- Initialize the variables
+        a_reg := unsigned(a);
+        b_reg := unsigned(b);
+        n_reg := unsigned(n);
+        res_reg := (others => '0'); -- Initialize result to 0
+
+        -- Loop through each bit of 'b', starting from the least significant bit (LSB)
+        for i in 0 to C_block_size-1 loop
+            -- Shift res_reg to the left (equivalent to multiplying by 2)
+            res_reg := res_reg sll 1;
+
+            -- If the current bit of 'b' is 1, add a_reg to the result
+            if b_reg(i) = '1' then
+                res_reg := res_reg + a_reg;
+            end if;
+
+            -- Apply modulus if res_reg >= n_reg
+            if res_reg >= n_reg then
+                res_reg := res_reg - n_reg;
+            end if;
+        end loop;
+
+        return std_logic_vector(res_reg);
+    end function modular_multiply;
+
+begin
     process(clk, reset_n)
     begin
         if reset_n = '0' then
@@ -117,32 +129,5 @@ begin
         end if;
     end process;
 
-   function modular_multiply(a, b, n : STD_LOGIC_VECTOR(C_block_size-1 downto 0)) return STD_LOGIC_VECTOR(C_block_size-1 downto 0) is
-        variable a_reg, b_reg, n_reg, res_reg : unsigned(C_block_size-1 downto 0);
-    begin
-    -- Initialize the variables
-    a_reg := unsigned(a);
-    b_reg := unsigned(b);
-    n_reg := unsigned(n);
-    res_reg := (others => '0'); -- Initialize result to 0
-
-    -- Loop through each bit of 'b', starting from the least significant bit (LSB)
-    for i in 0 to C_block_size-1 loop
-        -- Shift res_reg to the left (equivalent to multiplying by 2)
-        res_reg := res_reg sll 1;
-
-        -- If the current bit of 'b' is 1, add a_reg to the result
-        if b_reg(i) = '1' then
-            res_reg := res_reg + a_reg;
-        end if;
-
-        -- Apply modulus if res_reg >= n_reg
-        if res_reg >= n_reg then
-            res_reg := res_reg - n_reg;
-        end if;
-    end loop;
-
-    return std_logic_vector(res_reg);
-end function modular_multiply;
-
 end expBehave;
+
