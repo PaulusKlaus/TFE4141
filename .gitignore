@@ -1,1 +1,9 @@
-.DS_store
+
+
+RSA_accelerator/RSA_accelerator/
+RSA_accelerator/IP/
+Exponentiation/Exponentiation/
+RSA_soc/RSA_soc/
+
+.Xil
+*/.Xil
