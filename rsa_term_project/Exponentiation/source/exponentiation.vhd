@@ -43,8 +43,7 @@ architecture expBehave of exponentiation is
     -- Declare the function before the 'begin'
     function modular_multiply(a, b, n : STD_LOGIC_VECTOR) return STD_LOGIC_VECTOR is
         variable a_reg, b_reg, n_reg, res_reg : unsigned(a'range); -- Use the range of 'a' for sizing
-        
-        
+          
     begin
         -- Initialize the variables
         a_reg := unsigned(a);
@@ -106,19 +105,20 @@ begin
 
                         -- Square the base
                         base <= modular_multiply(base, base, modulus_val);
-                        bit_index <= bit_index + 1; -- Move to the next bit
+                        bit_index <= bit_index + 1; -- Move to the next bit   //better to shift !!!!!
                     else
                         state <= OUTPUT; -- Move to the output state
                     end if;
 
                 when OUTPUT =>
-                    result <= result_reg; -- Output the result
+                    
                     valid_out <= '1'; -- Indicate valid output
                     if ready_out = '1' then
+                        result <= result_reg; -- Output the result
                         state <= INIT; -- Reset to initial state after processing is complete
                         ready_in <= '1';
                         valid_out <= '0';
-                    end if;
+                    end if; -- legge til busy waiting 
 
                 when others =>
                     state <= INIT; -- Default state to reset
