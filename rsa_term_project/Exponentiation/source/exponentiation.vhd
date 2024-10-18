@@ -111,9 +111,8 @@ begin
                     end if;
 
                 when OUTPUT =>
-                    
-                    valid_out <= '1'; -- Indicate valid output
-                    if ready_out = '1' then
+                    valid_out <= '1'; -- Indicate valid output and wait 1 clock cycle
+                    if (ready_out = '1') then
                         result <= result_reg; -- Output the result
                         state <= INIT; -- Reset to initial state after processing is complete
                         ready_in <= '1';
