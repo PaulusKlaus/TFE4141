@@ -31,14 +31,13 @@ entity exponentiation is
 	);
 end exponentiation;
 
-
-
 architecture expBehave of exponentiation is
     signal base        : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal exponent    : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal modulus_val : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal result_reg  : STD_LOGIC_VECTOR(C_block_size-1 downto 0) := (others => '0');
-    signal state       : integer := 0; -- State variable for FSM
+    type state_type is (INIT, PROCESSING, OUTPUT);
+    signal state : state_type := INIT;
     signal bit_index   : integer := 0; -- Index for the current bit of the exponent
 
     -- Declare the function before the 'begin'
@@ -82,24 +81,24 @@ begin
             modulus_val <= (others => '0');
             result_reg <= (others => '1'); -- Initialize result to 1
             bit_index <= 0;
-            state <= 0;
+            state <= INIT;
             valid_out <= '0';
             ready_in <= '1'; -- Ready for new input
         elsif rising_edge(clk) then
             case state is
-                when 0 =>
+                when INIT =>
                     if valid_in = '1' then
                         base <= message;           -- Assign base from message
                         exponent <= key;           -- Assign exponent from key
                         modulus_val <= modulus;    -- Assign modulus
                         bit_index <= 0;            -- Start from the least significant bit
                         result_reg <= (others => '1'); -- Initialize result to 1
-                        state <= 1;
+                        state <= PROCESSING;
                         ready_in <= '0'; -- Processing input
                         valid_out <= '0';
                     end if;
 
-                when 1 =>
+                when PROCESSING =>
                     if bit_index < C_block_size then -- Iterate over bits of exponent from right to left
                         if exponent(bit_index) = '1' then
                             result_reg <= modular_multiply(result_reg, base, modulus_val);
@@ -109,20 +108,20 @@ begin
                         base <= modular_multiply(base, base, modulus_val);
                         bit_index <= bit_index + 1; -- Move to the next bit
                     else
-                        state <= 2; -- Move to the output state
+                        state <= OUTPUT; -- Move to the output state
                     end if;
 
-                when 2 =>
+                when OUTPUT =>
                     result <= result_reg; -- Output the result
                     valid_out <= '1'; -- Indicate valid output
                     if ready_out = '1' then
-                        state <= 0; -- Reset to initial state after processing is complete
+                        state <= INIT; -- Reset to initial state after processing is complete
                         ready_in <= '1';
                         valid_out <= '0';
                     end if;
 
                 when others =>
-                    state <= 0; -- Default state to reset
+                    state <= INIT; -- Default state to reset
                     ready_in <= '1';
                     valid_out <= '0';
             end case;
