@@ -15,7 +15,7 @@ architecture behavior of modular_multiply_blakely_tb is
     signal clk           : STD_LOGIC := '0';
     signal rst_n         : STD_LOGIC := '1';
     signal a             : STD_LOGIC_VECTOR(C_block_size - 1 downto 0);
-    signal b             : STD_LOGIC := '1';
+    signal b_i             : STD_LOGIC := '1';
     signal modulo        : STD_LOGIC_VECTOR(C_block_size - 1 downto 0);
     signal blakely_enable: STD_LOGIC := '0';
     signal result        : STD_LOGIC_VECTOR(C_block_size - 1 downto 0);
@@ -34,7 +34,7 @@ begin
             clk            => clk,
             rst_n          => rst_n,
             a              => a,
-            b              => b,
+            b_i              => b_i,
             modulo         => modulo,
             blakely_enable => blakely_enable,
             result         => result
@@ -69,7 +69,7 @@ begin
         wait for clk_period * 5;
         a <= x"000000000000000000000000000000000000000000000000000000000000000A"; -- a = 10
         modulo <= x"0000000000000000000000000000000000000000000000000000000000000003"; -- modulo = 3
-        b <= '1'; -- Set multiplier bit b = 1
+        b_i <= '1'; -- Set multiplier bit b = 1
         blakely_enable <= '1'; -- Enable the operation
 
         wait for clk_period * 10;
@@ -77,16 +77,16 @@ begin
         -- Test case 2: Multiply with different modulo
         modulo <= x"99925173ad65686715385ea800cd28120288fc70a9bc98dd4c90d676f8ff768d"; 
         a <= x"85ee722363960779206a2b37cc8b64b5fc12a934473fa0204bbaaf714bc90c01";
-        b <= '1'; -- b = 1, multiplication enabled
+        b_i <= '1'; -- b = 1, multiplication enabled
 
         wait for clk_period * 10;
 
         -- Test case 3: Test when b = 0 (no multiplication)
-        b <= '0';
+        b_i <= '0';
         wait for clk_period * 10;
 
         -- Test case 4: Disable the operation
-         b <= '1';
+         b_i <= '1';
         blakely_enable <= '0';
         wait for clk_period * 10;
 

@@ -16,7 +16,7 @@ entity modular_multiply_blakely is
 
         -- Inputs
         a               :  in STD_LOGIC_VECTOR(C_block_size - 1 downto 0);
-        b               :  in STD_LOGIC;
+        b_i               :  in STD_LOGIC;
         modulo          :  in STD_LOGIC_VECTOR(C_block_size - 1 downto 0);
         blakely_enable  :  in STD_LOGIC;
 
@@ -65,14 +65,14 @@ begin
 
 -- Combinatorial modulat_multiplication algorithm
 
-    process ( a, b, modulo, modulo_shifted, result_r, result_nxt, result_bitshift, sum_a, mux_b, sum_modulo, sum_2modulo, underflow1, underflow2, mux_b_underflow)
+    process ( a, b_i, modulo, modulo_shifted, result_r, result_nxt, result_bitshift, sum_a, mux_b, sum_modulo, sum_2modulo, underflow1, underflow2, mux_b_underflow)
     begin
             -- Calculate some intermediate values
         result_bitshift <= STD_LOGIC_VECTOR(shift_left(resize(signed(result_r), C_block_size+1), 1));
         sum_a <= STD_LOGIC_VECTOR(unsigned(result_bitshift) + resize(unsigned(a), C_block_size+1));
         
         -- B[i] selection mux
-        if(b = '1') then
+        if(b_i = '1') then
             mux_b <= sum_a;
         else
             mux_b <= result_bitshift;
