@@ -12,8 +12,8 @@ def modular_multiply(x, y, modulus):
             R = R + x
         
         # Perform reduction: keep R in the range [0, N-1] with at most two subtractions
-        if R >= modulus:
-            R = R - modulus
+        if R >= 2* modulus:
+            R = R - 2*modulus
         if R >= modulus:
             R = R - modulus
 
