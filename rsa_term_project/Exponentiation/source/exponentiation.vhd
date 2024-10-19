@@ -10,14 +10,19 @@ entity exponentiation is
 		--input controll
 		valid_in	: in STD_LOGIC;
 		ready_in	: out STD_LOGIC;
+		--ouput controll
+		ready_out	: in STD_LOGIC;
+		valid_out	: out STD_LOGIC;
+		
+		--messege controll
+		msgin_last    : in std_logic;
+		msgout_last   : out std_logic;
 
 		--input data
 		message 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
 		key 		: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
-
-		--ouput controll
-		ready_out	: in STD_LOGIC;
-		valid_out	: out STD_LOGIC;
+		--modulus
+		n           : in std_logic_vector ( C_block_size-1 downto 0 );
 
 		--output data
 		result 		: out STD_LOGIC_VECTOR(C_block_size-1 downto 0);
