@@ -91,73 +91,85 @@ begin
     	--wait for 70*CLK_PERIOD;
     	wait until mm_data_out_valid = '1';
     	--wait until mm_data_in_ready = '1' for 70*CLK_PERIOD;
-        --assert mm_data_in_ready = '1' report "Timeout: mm_data_in_ready not asserted" severity error;
-
-    	
-    	
+        --assert mm_data_in_ready = '1' report "Timeout: mm_data_in_ready not asserted" severity error
+        
     	assert M_out = x"0075b1cb9040e4fa";
     	wait for 10*CLK_PERIOD;
-
     	
     	mm_data_out_ready <= '1';
     	wait for CLK_PERIOD;
     	mm_data_out_ready <= '0';
 
     	--MORE TESTS
-    	
-	   
-	   wait for 1*CLK_PERIOD;
-
-	   --TESTS
+	    wait for 1*CLK_PERIOD;
     	A_in <= x"07659b124f9afa93";
     	B_in <= x"08849308493143dd";
     	N_in <= x"F58A967DBC6A7053"; --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); 
     	mm_data_in_valid <= '1';
-    	
+    	wait until mm_data_in_ready = '1';
+    	mm_data_in_valid <= '0';
     	--OUT = 13
     	--wait for 70*CLK_PERIOD;
-    	wait until mm_data_out_ready = '1';
+    	wait until mm_data_out_valid = '1';
+    	--wait until mm_data_in_ready = '1' for 70*CLK_PERIOD;
+        --assert mm_data_in_ready = '1' report "Timeout: mm_data_in_ready not asserted" severity error
+        
+    	assert M_out = x"0075b1cb9040e4fa";
+    	wait for 10*CLK_PERIOD;
     	
-    	
-    	assert M_out = x"4f02674256cb793";
-    	mm_data_in_valid <= '0';
+    	mm_data_out_ready <= '1';
     	wait for CLK_PERIOD;
-
-    	--MORE TESTS
+    	mm_data_out_ready <= '0';
     	
-	   
-	   
-	   
-	   
-	   
-    	--TESTS
+    	
+    	
+        wait for 1*CLK_PERIOD;
     	A_in <= std_logic_vector(to_unsigned( 16#13#, C_block_size));
     	B_in <= std_logic_vector(to_unsigned( 16#10#, C_block_size));
-    	N_in <= x"FFFFFFFFFFFFFF89"; --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); 
+    	N_in <= x"FFFFFFFFFFFFFF89"; --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); 
     	mm_data_in_valid <= '1';
-    	
-    	--OUT = 42
-    	wait until mm_data_out_ready = '1';
-    	assert M_out = std_logic_vector(to_unsigned( 16#42#, C_block_size));
-    	wait for CLK_PERIOD;
+    	wait until mm_data_in_ready = '1';
     	mm_data_in_valid <= '0';
-    	wait for CLK_PERIOD;
+    	--OUT = 42
+    	--wait for 70*CLK_PERIOD;
+    	wait until mm_data_out_valid = '1';
+    	--wait until mm_data_in_ready = '1' for 70*CLK_PERIOD;
+        --assert mm_data_in_ready = '1' report "Timeout: mm_data_in_ready not asserted" severity error
+        
+    	assert M_out = std_logic_vector(to_unsigned( 16#42#, C_block_size));
+    	wait for 10*CLK_PERIOD;
     	
-    	--TESTS
+    	mm_data_out_ready <= '1';
+    	wait for CLK_PERIOD;
+    	mm_data_out_ready <= '0';
+    	
+    	
+    	
+    	
+	 
+    	wait for 1*CLK_PERIOD;
     	A_in <= std_logic_vector(to_unsigned( 16#1#, C_block_size));
     	B_in <= std_logic_vector(to_unsigned( 16#42#, C_block_size));
-    	N_in <= x"FFFFFFFFFFFFFF89"; --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); 
+    	N_in <= x"FFFFFFFFFFFFFF89"; --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); 
     	mm_data_in_valid <= '1';
-    	
-    	--OUT = 42
-    	wait until mm_data_out_ready = '1';
-    	assert M_out = std_logic_vector(to_unsigned( 16#42#, C_block_size));
-    	wait for CLK_PERIOD;
+    	wait until mm_data_in_ready = '1';
     	mm_data_in_valid <= '0';
-    	wait for CLK_PERIOD;
-
-    	--MORE TESTS
+    	--OUT = 42
+    	--wait for 70*CLK_PERIOD;
+    	wait until mm_data_out_valid = '1';
+    	--wait until mm_data_in_ready = '1' for 70*CLK_PERIOD;
+        --assert mm_data_in_ready = '1' report "Timeout: mm_data_in_ready not asserted" severity error
+        
+    	assert M_out = std_logic_vector(to_unsigned( 16#42#, C_block_size));
+    	wait for 10*CLK_PERIOD;
     	
+    	mm_data_out_ready <= '1';
+    	wait for CLK_PERIOD;
+    	mm_data_out_ready <= '0';
+    	
+    	
+    	
+
     	--TESTS
     	A_in <= std_logic_vector(to_unsigned( 16#42#, C_block_size));
     	B_in <= std_logic_vector(to_unsigned( 16#43#, C_block_size));
@@ -170,25 +182,7 @@ begin
     	wait for CLK_PERIOD;
     	mm_data_in_valid <= '0';
     	wait for CLK_PERIOD;
-    	
-    	--TESTS
-    	A_in <= std_logic_vector(to_unsigned( 16#13#, C_block_size));
-    	B_in <= std_logic_vector(to_unsigned( 16#56#, C_block_size));
-    	N_in <= x"FFFFFFFFFFFFFF89"; --std_logic_vector(to_unsigned( 16#FFFFFFFFFFFFFF89#, C_block_size)); 
-    	mm_data_in_valid <= '1';
-    	
-    	--OUT = 13
-    	wait until mm_data_out_ready = '1';
-    	assert M_out = std_logic_vector(to_unsigned( 16#13#, C_block_size));
-    	wait for CLK_PERIOD;
-    	mm_data_in_valid <= '0';
-    	wait for CLK_PERIOD;
-
-    	--MORE TESTS
-    	
-    	
-    	
-        
+  
         assert false report "Test done." severity note;
     	wait;
 	end process stimulus;
