@@ -27,7 +27,7 @@ architecture expBehave of exponentiation_tb is
 
 begin
 
-	-- Instantiate the unit under test (UUT)
+	-- Instantiate the device under test (DUT)
 	i_exponentiation : entity work.exponentiation
 		port map (
 			message   => message,
