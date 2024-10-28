@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_SIGNED.ALL;
 
 entity modular_multiplier is
  Generic (
@@ -37,16 +37,17 @@ begin
                 n_reg <= UNSIGNED(n);
                 done <= '0';
                 result_reg <= (others => '0'); -- Initialize result to 0
+                result <= (others => '0');  -- Initialize result to 0
                 counter <= (others => '0');
             else
                 if counter < 256 then
                     b_msb <= b_reg(C_block_size - 1);
                     b_reg <= b_reg(C_block_size-2 downto 0)&'0';
                     counter <= counter + 1;
-                    result <= STD_LOGIC_VECTOR(result_reg);
+                    result_reg <= intermediate_result3(C_block_size - 1 downto 0); -- Very important that this update is clocked here
                 else
-                    result <= STD_LOGIC_VECTOR(result_reg);
                     done <= '1';
+                    result <= STD_LOGIC_VECTOR(result_reg);
                 end if;
            end if;
        end if;
@@ -62,33 +63,29 @@ begin
         end if;
     end process;
     
-    -- Process for updating result = result*2 + A, mod n.
-    process(a_adder_input)
+    -- Process for updating result = (result*2 + A) mod n.
+    process(result_reg, a_adder_input) -- Very important that result_reg is in the sensitivity list
     begin
-        intermediate_result <= (result_reg(C_block_size-1 downto 0) & '0') + ('0' & a_adder_input);
+        intermediate_result <= (result_reg & '0') + ('0' & a_adder_input);
     end process;
     
     -- Process for mod n
---    process(intermediate_result)
---    begin
---        if intermediate_result > ('0' & n_reg) then
---            intermediate_result2 <= intermediate_result - ('0' & n_reg);
---        else
---            intermediate_result2 <= intermediate_result;
---        end if;
---    end process;
-    
---    process(intermediate_result2)
---    begin
---        if intermediate_result2 > ('0' & n_reg) then
---            intermediate_result3 <= intermediate_result2 - ('0' & n_reg);
---        else
---            intermediate_result3 <= intermediate_result2;
---        end if;
---    end process;  
-    
     process(intermediate_result)
     begin
-        result_reg <= intermediate_result(C_block_size - 1 downto 0);
+        if intermediate_result > ('0' & n_reg) then
+            intermediate_result2 <= intermediate_result - ('0' & n_reg);
+        else
+            intermediate_result2 <= intermediate_result;
+        end if;
     end process;
+    
+    process(intermediate_result2)
+    begin
+        if intermediate_result2 > ('0' & n_reg) then
+            intermediate_result3 <= intermediate_result2 - ('0' & n_reg);
+        else
+            intermediate_result3 <= intermediate_result2;
+        end if;
+    end process;
+    
 end Behavioral;
