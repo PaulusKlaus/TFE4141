@@ -47,7 +47,7 @@ architecture Behavioral of multiplier_tb is
     signal a_tb, b_tb, n_tb         : STD_LOGIC_VECTOR(255 downto 0); -- Test vectors
     signal result_tb                : STD_LOGIC_VECTOR(255 downto 0); -- Result
     signal clk_tb                   : STD_LOGIC := '0';               -- Clock signal
-    signal reset_and_load_tb        : STD_LOGIC := '0';               -- Reset signal
+    signal reset_and_load_tb        : STD_LOGIC := '1';               -- Reset signal
     signal done_tb                  : STD_LOGIC;                      -- Done signal
 
     constant clk_period : time := 10 ns;                      -- Clock period
@@ -82,20 +82,12 @@ begin
     stimulus: process
     begin
         -- Initialize inputs
-        reset_and_load_tb <= '1';
-        a_tb <= (others => '0'); 
-        b_tb <= (others => '0'); 
-        n_tb <= (others => '0');
-        wait for clk_period * 5;  -- Wait for some clock cycles
-
-        -- Apply stimulus
-        reset_and_load_tb <= '0';   -- Apply reset
+        reset_and_load_tb <= '1';   -- Load values
         a_tb <= x"0000000000000000000000000000000000000000000000000000000000000002";  -- Input a = 2
         b_tb <= x"0000000000000000000000000000000000000000000000000000000000000003";  -- Input b = 3
         n_tb <= x"0000000000000000000000000000000000000000000000000000000000000005";  -- Modulus n = 5
         wait for clk_period * 5;  -- Wait for some clock cycles
-
-        reset_and_load_tb <= '1';
+        reset_and_load_tb <= '0';
 
         -- Wait for the operation to complete
         wait until done_tb = '1';
@@ -105,14 +97,12 @@ begin
             report "Test Failed for a=2, b=3, n=5" severity error;
 
         -- Apply next set of inputs
-        reset_and_load_tb <= '1';   -- Apply reset again
-        wait for clk_period * 5;
-        reset_and_load_tb <= '0';   -- Release reset
+        reset_and_load_tb <= '1';   -- Load values
         a_tb <= x"000000000000000000000000000000000000000000000000000000000000000A";  -- Input a = 10
         b_tb <= x"0000000000000000000000000000000000000000000000000000000000000007";  -- Input b = 7
         n_tb <= x"000000000000000000000000000000000000000000000000000000000000000D";  -- Modulus n = 13
         wait for clk_period * 5;
-        reset_and_load_tb <= '1';   -- Apply reset again
+        reset_and_load_tb <= '0';
 
         -- Wait for the operation to complete
         wait until done_tb = '1';

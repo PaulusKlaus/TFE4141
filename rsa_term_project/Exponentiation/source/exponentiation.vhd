@@ -7,21 +7,21 @@ entity exponentiation is
 		C_block_size : integer := 256
 	);
 	Port (
-		--input controll
+		-- Input controll
 		valid_in	: in STD_LOGIC;
 		ready_in	: out STD_LOGIC;
 
-		--data
+		-- Data
 		message 	: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
 		key 		: in STD_LOGIC_VECTOR ( C_block_size-1 downto 0 );
 		modulus 	: in STD_LOGIC_VECTOR(C_block_size-1 downto 0);
 		result 		: out STD_LOGIC_VECTOR(C_block_size-1 downto 0);
 
-		--ouput controll
+		-- Ouput controll
 		ready_out	: in STD_LOGIC;
 		valid_out	: out STD_LOGIC;
 
-		--utility
+		-- Utility
 		clk 		: in STD_LOGIC;
 		reset_n 	: in STD_LOGIC                 
 	);
@@ -40,9 +40,12 @@ architecture expBehave of exponentiation is
     signal multiplication_done : STD_LOGIC := '0';
     
     -- FSM signals
-    type state_type is (INIT, PROCESSING, OUTPUT);
+     type state_type is (INIT, WAIT_MULTIPLY, SQUARE_BASE, PROCESSING, OUTPUT);
     signal state : state_type := INIT;
-    signal bit_index   : integer := 0; -- Index for the current bit of the exponent
+    signal exponent_index   : integer := 0; -- Index for the current bit of the exponent
+    signal base_squared : STD_LOGIC := '0';
+    signal multiply_enable : STD_LOGIC := '0';
+
     
 begin
     u_modular_multiplier: entity work.modular_multiplier
@@ -52,7 +55,7 @@ begin
     port map (
         -- Clock and Reset
         clk                 => clk,
-        reset_and_load      => reset_n,
+        reset_and_load      => multiply_enable,
         
         -- Data
         factor_a    => load_a_reg,
@@ -70,10 +73,13 @@ begin
             exponent <= (others => '0');
             modulus_val <= (others => '0');
             exponentiation_result <= (others => '1'); -- Initialize result to 1
-            bit_index <= 0;
+            exponent_index <= 0;
             state <= INIT;
             valid_out <= '0';
             ready_in <= '1'; -- Ready for new input
+            multiply_enable <= '0';
+            base_squared <= '0';
+            
         elsif rising_edge(clk) then
             case state is
                 when INIT =>
@@ -81,7 +87,7 @@ begin
                         base <= message;           -- Assign base from message
                         exponent <= key;           -- Assign exponent from key
                         modulus_val <= modulus;    -- Assign modulus
-                        bit_index <= 0;            -- Start from the least significant bit
+                        exponent_index <= 0;       -- Start from the least significant bit
                         exponentiation_result <= (others => '1'); -- Initialize result to 1
                         ready_in <= '0'; -- Processing input
                         valid_out <= '0';
@@ -89,17 +95,40 @@ begin
                     end if;
 
                 when PROCESSING =>
-                    if bit_index < 256 then -- Iterate over bits of exponent from right to left
-                        if exponent(bit_index) = '1' then
-                            --exponentiation_result <= modular_multiply(exponentiation_result = factor_a, base = factor_b, modulus_val = modulus_n);
+                    if exponent_index < C_block_size then -- Iterate over bits of exponent from right to left
+                        -- Multiply result with base if exponent bit is 1
+                        if exponent(exponent_index) = '1' then
+                            load_a_reg <= exponentiation_result;
+                            load_b_reg <= base;
+                            multiply_enable <= '1';
+                            base_squared <= '0'; -- Flag set to indicate normal multiplication
+                            state <= WAIT_MULTIPLY;                        
+                        else -- Go directly to squaring
+                            state <= SQUARE_BASE;
                         end if;
-
-                        -- Square the base
-                        --base <= modular_multiply(base = factor_a, base = factor_b, modulus_val = modulus_n);
-                        bit_index <= bit_index + 1; -- Move to the next bit   //better to shift !!!!!
                     else
                         state <= OUTPUT; -- Move to the output state
                     end if;
+                    
+                when WAIT_MULTIPLY =>
+                    multiply_enable <= '0';
+                    if multiplication_done = '1' then
+                        if base_squared = '1' then
+                            base <= multiplication_result; -- Update base with squared value
+                            base_squared <= '0'; -- Reset flag
+                            state <= PROCESSING; -- Return to PROCESSING for the next bit
+                        else
+                            exponentiation_result <= multiplication_result; -- Update result
+                            state <= SQUARE_BASE; -- Now square the base
+                        end if;
+                    end if;
+               
+               when SQUARE_BASE =>
+                    load_a_reg <= base;
+                    load_b_reg <= base;
+                    multiply_enable <= '1';
+                    base_squared <= '1'; -- Set flag to indicate squaring
+                    state <= WAIT_MULTIPLY;
 
                 when OUTPUT =>
                     if(valid_out = '0') then

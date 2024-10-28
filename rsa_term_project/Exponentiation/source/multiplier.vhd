@@ -8,7 +8,7 @@ entity modular_multiplier is
     );
     Port (
         clk                     : in  STD_LOGIC;                       -- Clock signal
-        reset_and_load          : in  STD_LOGIC;                       -- reset signal
+        reset_and_load          : in  STD_LOGIC;                       -- reset signal, active high
         factor_a                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'a'
         factor_b                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'b'
         modulus_n               : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Modulus 'n'
@@ -29,7 +29,7 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            if reset_and_load = '0' then
+            if reset_and_load = '1' then
                 -- Initialize and load the registers
                 a_reg <= UNSIGNED(factor_a);
                 b_reg <= factor_b;
