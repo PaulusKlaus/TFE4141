@@ -36,6 +36,7 @@ begin
                 b_reg <= b;
                 n_reg <= UNSIGNED(n);
                 done <= '0';
+                b_msb <= '0';
                 result_reg <= (others => '0'); -- Initialize result to 0
                 result <= (others => '0');  -- Initialize result to 0
                 counter <= (others => '0');
@@ -47,7 +48,7 @@ begin
                     result_reg <= intermediate_result3(C_block_size - 1 downto 0); -- Very important that this update is clocked here
                 else
                     done <= '1';
-                    result <= STD_LOGIC_VECTOR(result_reg);
+                    result <= STD_LOGIC_VECTOR(intermediate_result3(C_block_size - 1 downto 0)); -- If we use result_reg here, we get unbounded loop
                 end if;
            end if;
        end if;

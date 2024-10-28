@@ -118,7 +118,7 @@ begin
         wait until done_tb = '1';
 
         -- Check result
-        assert result_tb = x"0000000000000000000000000000000000000000000000000000000000000009"
+        assert result_tb = x"0000000000000000000000000000000000000000000000000000000000000005"
             report "Test Failed for a=10, b=7, n=13" severity error;
 
         -- End simulation
