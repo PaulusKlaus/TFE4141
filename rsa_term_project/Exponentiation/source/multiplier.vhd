@@ -7,12 +7,12 @@ entity modular_multiplier is
 		C_block_size : integer := 256
     );
     Port (
+        clk                     : in  STD_LOGIC;                       -- Clock signal
+        reset_and_load          : in  STD_LOGIC;                       -- reset signal
         factor_a                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'a'
         factor_b                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'b'
         modulus_n               : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Modulus 'n'
         multiplication_result   : out STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Output result
-        clk                     : in  STD_LOGIC;                       -- Clock signal
-        reset_and_load          : in  STD_LOGIC;                       -- reset signal
         done                    : out STD_LOGIC                        -- Done signal
     );
 end modular_multiplier;
@@ -30,7 +30,7 @@ begin
     begin
         if rising_edge(clk) then
             if reset_and_load = '0' then
-                -- Initialize the registers
+                -- Initialize and load the registers
                 a_reg <= UNSIGNED(factor_a);
                 b_reg <= factor_b;
                 n_reg <= UNSIGNED(modulus_n);
@@ -44,7 +44,7 @@ begin
                     b_msb <= b_reg(C_block_size - 1);
                     b_reg <= b_reg(C_block_size-2 downto 0)&'0';
                     counter <= counter + 1;
-                    result_reg <= intermediate_result3(C_block_size - 1 downto 0); -- Very important that this update is clocked here
+                    result_reg <= intermediate_result3(C_block_size - 1 downto 0); -- Very important that this update is clocked
                 else
                     done <= '1';
                     multiplication_result <= STD_LOGIC_VECTOR(intermediate_result3(C_block_size - 1 downto 0)); -- If we use result_reg here, we get unbounded loop
