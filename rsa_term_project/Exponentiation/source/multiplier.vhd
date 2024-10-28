@@ -1,20 +1,19 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.STD_LOGIC_SIGNED.ALL;
 
 entity modular_multiplier is
  Generic (
 		C_block_size : integer := 256
     );
     Port (
-        a        : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'a'
-        b        : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'b'
-        n        : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Modulus 'n'
-        result   : out STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Output result
-        clk      : in  STD_LOGIC;                       -- Clock signal
-        reset    : in  STD_LOGIC;                       -- reset signal
-        done     : out STD_LOGIC                        -- Done signal
+        factor_a                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'a'
+        factor_b                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'b'
+        modulus_n               : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Modulus 'n'
+        multiplication_result   : out STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Output result
+        clk                     : in  STD_LOGIC;                       -- Clock signal
+        reset_and_load          : in  STD_LOGIC;                       -- reset signal
+        done                    : out STD_LOGIC                        -- Done signal
     );
 end modular_multiplier;
 
@@ -30,15 +29,15 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            if reset = '0' then
+            if reset_and_load = '0' then
                 -- Initialize the registers
-                a_reg <= UNSIGNED(a);
-                b_reg <= b;
-                n_reg <= UNSIGNED(n);
+                a_reg <= UNSIGNED(factor_a);
+                b_reg <= factor_b;
+                n_reg <= UNSIGNED(modulus_n);
                 done <= '0';
                 b_msb <= '0';
                 result_reg <= (others => '0'); -- Initialize result to 0
-                result <= (others => '0');  -- Initialize result to 0
+                multiplication_result <= (others => '0');  -- Initialize result to 0
                 counter <= (others => '0');
             else
                 if counter < 256 then
@@ -48,7 +47,7 @@ begin
                     result_reg <= intermediate_result3(C_block_size - 1 downto 0); -- Very important that this update is clocked here
                 else
                     done <= '1';
-                    result <= STD_LOGIC_VECTOR(intermediate_result3(C_block_size - 1 downto 0)); -- If we use result_reg here, we get unbounded loop
+                    multiplication_result <= STD_LOGIC_VECTOR(intermediate_result3(C_block_size - 1 downto 0)); -- If we use result_reg here, we get unbounded loop
                 end if;
            end if;
        end if;

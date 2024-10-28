@@ -28,6 +28,15 @@ entity exponentiation is
 		--utility
 		clk 		: in STD_LOGIC;
 		reset_n 	: in STD_LOGIC
+		
+		--multiplication controll
+        factor_a                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);
+        factor_b                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);
+        modulus_n               : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0); 
+        multiplication_result   : out STD_LOGIC_VECTOR(C_block_size -1 downto 0);
+        clk                     : in  STD_LOGIC;                      
+        reset_and_load          : in  STD_LOGIC;                    
+        done                    : out STD_LOGIC                       
 	);
 end exponentiation;
 
@@ -39,36 +48,6 @@ architecture expBehave of exponentiation is
     type state_type is (INIT, PROCESSING, OUTPUT);
     signal state : state_type := INIT;
     signal bit_index   : integer := 0; -- Index for the current bit of the exponent
-
-    -- Declare the function before the 'begin'
-    function modular_multiply(a, b, n : STD_LOGIC_VECTOR) return STD_LOGIC_VECTOR is
-        variable a_reg, b_reg, n_reg, res_reg : unsigned(a'range); -- Use the range of 'a' for sizing
-          
-    begin
-        -- Initialize the variables
-        a_reg := unsigned(a);
-        b_reg := unsigned(b);
-        n_reg := unsigned(n);
-        res_reg := (others => '0'); -- Initialize result to 0
-
-        -- Loop through each bit of 'b', starting from the least significant bit (LSB)
-        for i in 0 to C_block_size-1 loop
-            -- Shift res_reg to the left (equivalent to multiplying by 2)
-            res_reg := res_reg sll 1;
-
-            -- If the current bit of 'b' is 1, add a_reg to the result
-            if b_reg(i) = '1' then
-                res_reg := res_reg + a_reg;
-            end if;
-
-            -- Apply modulus if res_reg >= n_reg
-            if res_reg >= n_reg then
-                res_reg := res_reg - n_reg;
-            end if;
-        end loop;
-
-        return std_logic_vector(res_reg);
-    end function modular_multiply;
 
 begin
     process(clk, reset_n)
@@ -98,7 +77,7 @@ begin
                     end if;
 
                 when PROCESSING =>
-                    if bit_index < 5 then -- Iterate over bits of exponent from right to left
+                    if bit_index < 256 then -- Iterate over bits of exponent from right to left
                         if exponent(bit_index) = '1' then
                             result_reg <= modular_multiply(result_reg, base, modulus_val);
                         end if;
