@@ -1,22 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 23.10.2024 14:13:08
--- Design Name: 
--- Module Name: multiplier_tb - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
 
 
 library IEEE;
@@ -24,6 +5,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity multiplier_tb is
+
+    generic(
+    C_block_size : integer := 64
+    );
 end multiplier_tb;
 
 architecture Behavioral of multiplier_tb is
@@ -95,6 +80,39 @@ begin
         -- Check result
         assert result_tb = x"0000000000000000000000000000000000000000000000000000000000000001"
             report "Test Failed for a=2, b=3, n=5" severity error;
+            
+            
+                -- Test with maximum values
+        reset_and_load_tb <= '1';
+        a_tb <= x"0a23232323232323232323232323232323232323232323232323232323232323";  -- Max input a
+        b_tb <= x"0a23232323232323232323232323232323232323232323232323232323232323";  -- Max input b
+        n_tb <= x"666dae8c529a9798eac7a157ff32d7edfd77038f56436722b36f298907008973";  -- Modulus n = 4095
+        wait for clk_period * 5;
+        reset_and_load_tb <= '0';
+
+        wait until done_tb = '1';
+
+        -- Expected value will vary depending on the exact operation but here assumed to be checked with 0xFFF modulus behavior
+        assert result_tb = x"43593D3D381F155A604E2D59CBCAE7DD45F9A3052004A8A68E804B7073441069"  -- Replace with the actual result expected
+            report "Test Failed for max values of a and b with n=4095" severity error;
+    
+                     
+--                -- Test with maximum values
+--        reset_and_load_tb <= '1';
+--        a_tb <= std_logic_vector(to_unsigned( 16#13#, C_block_size));
+--        b_tb <=std_logic_vector(to_unsigned( 16#56#, C_block_size));  -- Max input b
+--        n_tb <= x"FFFFFFFFFFFFFF89";  -- Modulus n = 4095
+--        wait for clk_period * 5;
+--        reset_and_load_tb <= '0';
+
+--        wait until done_tb = '1';
+
+--        -- Expected value will vary depending on the exact operation but here assumed to be checked with 0xFFF modulus behavior
+--        assert result_tb = x"000000000000000000000000000000000000000000000000000000000000000D"  -- Replace with the actual result expected
+--            report "Test Failed for max values of a and b with n=4095" severity error;
+    
+               
+            
 
         -- Apply next set of inputs
         reset_and_load_tb <= '1';   -- Load values
