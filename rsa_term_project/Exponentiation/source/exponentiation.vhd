@@ -27,7 +27,7 @@ entity exponentiation is
 	);
 end exponentiation;
 
-architecture expBehave of exponentiation is
+architecture Behavioral of exponentiation is
     signal base        : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal exponent    : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal modulus_val : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
@@ -148,5 +148,5 @@ begin
         end if;
     end process;
 
-end expBehave;
+end Behavioral;
 

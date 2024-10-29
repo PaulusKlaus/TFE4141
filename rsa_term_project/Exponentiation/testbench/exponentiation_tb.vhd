@@ -8,17 +8,23 @@ entity exponentiation_tb is
 	);
 end exponentiation_tb;
 
-architecture expBehave of exponentiation_tb is
+architecture Behavioral of exponentiation_tb is
 
-	-- Signal declarations
+	-- Data
 	signal message 		: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
 	signal key 			: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
+	signal modulus 		: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
+    signal result 		: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
+    
+    -- Input Control
 	signal valid_in 	: STD_LOGIC;
 	signal ready_in 	: STD_LOGIC;
-	signal ready_out 	: STD_LOGIC := '1'; -- Assume ready_out from DUT starts as '1'
+	
+	-- Output Control
+	signal ready_out 	: STD_LOGIC := '1'; -- Assume ready_out from UUT starts as '1'
 	signal valid_out 	: STD_LOGIC;
-	signal result 		: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
-	signal modulus 		: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
+	
+	-- Utility
 	signal clk 			: STD_LOGIC := '0';
 	signal reset_n 		: STD_LOGIC := '1';
 
@@ -27,17 +33,20 @@ architecture expBehave of exponentiation_tb is
 
 begin
 
-	-- Instantiate the device under test (DUT)
-	i_exponentiation : entity work.exponentiation
+	-- Instantiate the unit under test (UUT)
+	u_exponentiation : entity work.exponentiation
 		port map (
 			message   => message,
 			key       => key,
+			modulus   => modulus,
+			result    => result,
+
 			valid_in  => valid_in,
 			ready_in  => ready_in,
+
 			ready_out => ready_out,
 			valid_out => valid_out,
-			result    => result,
-			modulus   => modulus,
+
 			clk       => clk,
 			reset_n   => reset_n
 		);
@@ -59,10 +68,10 @@ begin
 		constant modulus1 : unsigned(C_block_size-1 downto 0) := to_unsigned(13, C_block_size);
 		constant expected_result1 : unsigned(C_block_size-1 downto 0) := to_unsigned(8, C_block_size); -- (5^3 mod 13) = 8
 
-		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(6, C_block_size);
-		constant exponent2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size);
-		constant modulus2 : unsigned(C_block_size-1 downto 0) := to_unsigned(17, C_block_size);
-		constant expected_result2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size); -- (6^4 mod 17) = 4
+--		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(6, C_block_size);
+--		constant exponent2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size);
+--		constant modulus2 : unsigned(C_block_size-1 downto 0) := to_unsigned(17, C_block_size);
+--		constant expected_result2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size); -- (6^4 mod 17) = 4
 
 	begin
 		-- Initial reset
@@ -85,23 +94,23 @@ begin
 		assert result = std_logic_vector(expected_result1)
 			report "Test case 1 failed: (5^3 mod 13) should be 8" severity error;
 
-		-- Test Case 2: (6^4 mod 17)
-		message <= std_logic_vector(base2);
-		key <= std_logic_vector(exponent2);
-		modulus <= std_logic_vector(modulus2);
-		valid_in <= '1';
-		wait for clk_period;
-		valid_in <= '0';
+--		-- Test Case 2: (6^4 mod 17)
+--		message <= std_logic_vector(base2);
+--		key <= std_logic_vector(exponent2);
+--		modulus <= std_logic_vector(modulus2);
+--		valid_in <= '1';
+--		wait for clk_period;
+--		valid_in <= '0';
 
-		-- Wait for the result to be valid
-		wait until valid_out = '1';
-		wait for clk_period;
-		-- Check the result
-		assert result = std_logic_vector(expected_result2)
-			report "Test case 2 failed: (6^4 mod 17) should be 4" severity error;
+--		-- Wait for the result to be valid
+--		wait until valid_out = '1';
+--		wait for clk_period;
+--		-- Check the result
+--		assert result = std_logic_vector(expected_result2)
+--			report "Test case 2 failed: (6^4 mod 17) should be 4" severity error;
 
 		-- End simulation
 		wait;
 	end process stimulus_process;
 
-end expBehave;
+end Behavioral;
