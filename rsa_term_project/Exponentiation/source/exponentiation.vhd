@@ -130,15 +130,15 @@ begin
                     base_squared <= '1'; -- Set flag to indicate squaring
                     state <= WAIT_MULTIPLY;
 
-                when OUTPUT =>
+                when OUTPUT => -- not quite right
                     if(valid_out = '0') then
-                        valid_out <= '1'; -- Indicate valid output and wait 1 clock cycle
-                    elsif (ready_out = '1') then
+                        valid_out <= '1'; -- Indicate valid output
+                    end if;
+                    if (ready_out = '1') then
                         result <= exponentiation_result; -- Output the result
-                        state <= INIT; -- Reset to initial state after processing is complete
                         ready_in <= '1';
-                        valid_out <= '0';
-                    end if; -- legge til busy waiting 
+                        state <= INIT; -- Reset to initial state after processing is complete
+                    end if;
 
                 when others =>
                     state <= INIT; -- Default state to reset
