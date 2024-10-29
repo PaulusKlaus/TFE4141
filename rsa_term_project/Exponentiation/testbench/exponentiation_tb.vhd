@@ -17,11 +17,11 @@ architecture Behavioral of exponentiation_tb is
     signal result 		: STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     
     -- Input Control
-	signal valid_in 	: STD_LOGIC;
+	signal valid_in 	: STD_LOGIC := '0';
 	signal ready_in 	: STD_LOGIC;
 	
 	-- Output Control
-	signal ready_out 	: STD_LOGIC := '1'; -- Assume ready_out from UUT starts as '1'
+	signal ready_out 	: STD_LOGIC := '1';
 	signal valid_out 	: STD_LOGIC;
 	
 	-- Utility

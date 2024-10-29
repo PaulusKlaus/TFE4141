@@ -128,6 +128,7 @@ begin
                     load_b_reg <= base;
                     multiply_enable <= '1';
                     base_squared <= '1'; -- Set flag to indicate squaring
+                    exponent_index <= exponent_index + 1;
                     state <= WAIT_MULTIPLY;
 
                 when OUTPUT => -- not quite right
