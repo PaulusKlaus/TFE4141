@@ -4,7 +4,7 @@ use ieee.numeric_std.all; -- For unsigned types and arithmetic functions
 
 entity exponentiation_tb is
 	generic (
-		C_block_size : integer := 256
+		C_block_size : integer := 8
 	);
 end exponentiation_tb;
 
@@ -63,10 +63,10 @@ begin
 	-- Stimulus process
 	stimulus_process : process
 		-- Test vectors (using unsigned directly)
-		constant base1 : unsigned(C_block_size-1 downto 0) := to_unsigned(5, C_block_size);
+		constant base1 : unsigned(C_block_size-1 downto 0) := to_unsigned(10, C_block_size);
 		constant exponent1 : unsigned(C_block_size-1 downto 0) := to_unsigned(3, C_block_size);
-		constant modulus1 : unsigned(C_block_size-1 downto 0) := to_unsigned(13, C_block_size);
-		constant expected_result1 : unsigned(C_block_size-1 downto 0) := to_unsigned(8, C_block_size); -- (5^3 mod 13) = 8
+		constant modulus1 : unsigned(C_block_size-1 downto 0) := to_unsigned(121, C_block_size);
+		constant expected_result1 : unsigned(C_block_size-1 downto 0) := to_unsigned(32, C_block_size); -- (5^3 mod 13) = 8
 
 --		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(6, C_block_size);
 --		constant exponent2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size);
@@ -92,7 +92,7 @@ begin
 		wait for clk_period; -- Give extra cycle to stabilize output
 		-- Check the result
 		assert result = std_logic_vector(expected_result1)
-			report "Test case 1 failed: (5^3 mod 13) should be 8" severity error;
+			report "Test case failed" severity error;
 
 --		-- Test Case 2: (6^4 mod 17)
 --		message <= std_logic_vector(base2);

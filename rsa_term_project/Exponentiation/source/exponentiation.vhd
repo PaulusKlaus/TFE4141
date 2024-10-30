@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity exponentiation is
 	Generic (
-		C_block_size : integer := 256
+		C_block_size : integer := 8
 	);
 	Port (
 		-- Input controll
@@ -95,7 +95,7 @@ begin
                     end if;
 
                 when PROCESSING =>
-                    if exponent_index < 8 then -- Iterate over bits of exponent from right to left
+                    if exponent_index < C_block_size then -- Iterate over bits of exponent from right to left
                         -- Multiply result with base if exponent bit is 1
                         if exponent(exponent_index) = '1' then
                             load_a_reg <= exponentiation_result;
@@ -130,9 +130,9 @@ begin
                     load_b_reg <= base;
                     load_multiplier <= '1';
                     base_squared <= '1'; -- Set flag to indicate squaring
-                    exponent_index <= exponent_index + 1;
                     if multiplication_done = '0' then   -- Wait for multiplier to reset
                         state <= WAIT_MULTIPLY;
+                        exponent_index <= exponent_index + 1;
                     end if;
 
                 when OUTPUT => -- not quite right
@@ -154,4 +154,3 @@ begin
     end process;
 
 end Behavioral;
-

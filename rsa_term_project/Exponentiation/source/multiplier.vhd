@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity modular_multiplier is
  Generic (
-		C_block_size : integer := 256
+		C_block_size : integer := 8
     );
     Port (
         clk                     : in  STD_LOGIC;                       -- Clock signal
@@ -40,7 +40,7 @@ begin
                 multiplication_result <= (others => '0');  -- Initialize result to 0
                 counter <= (others => '0');
             else
-                if counter < 256 then
+                if counter < C_block_size then
                     b_msb <= b_reg(C_block_size - 1);
                     b_reg <= b_reg(C_block_size-2 downto 0)&'0';
                     counter <= counter + 1;
