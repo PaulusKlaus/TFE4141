@@ -7,7 +7,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity multiplier_tb is
 
     generic(
-    C_block_size : integer := 8
+    C_block_size : integer := 256
     );
 end multiplier_tb;
 
@@ -15,7 +15,7 @@ architecture Behavioral of multiplier_tb is
  -- Component declaration of the unit under test (UUT)
     component modular_multiplier
     Generic (
-        C_block_size : integer := 8
+        C_block_size : integer := 256
     );
     Port (
         factor_a                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);

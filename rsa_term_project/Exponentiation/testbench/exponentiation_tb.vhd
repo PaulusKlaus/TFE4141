@@ -4,7 +4,7 @@ use ieee.numeric_std.all; -- For unsigned types and arithmetic functions
 
 entity exponentiation_tb is
 	generic (
-		C_block_size : integer := 8
+		C_block_size : integer := 256
 	);
 end exponentiation_tb;
 

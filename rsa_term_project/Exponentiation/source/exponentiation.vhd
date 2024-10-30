@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity exponentiation is
 	Generic (
-		C_block_size : integer := 8
+		C_block_size : integer := 256
 	);
 	Port (
 		-- Input controll

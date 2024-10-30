@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity modular_multiplier is
  Generic (
-		C_block_size : integer := 8
+		C_block_size : integer := 256
     );
     Port (
         clk                     : in  STD_LOGIC;                       -- Clock signal
