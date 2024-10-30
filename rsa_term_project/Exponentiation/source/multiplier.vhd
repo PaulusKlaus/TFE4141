@@ -13,7 +13,7 @@ entity modular_multiplier is
         factor_b                : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'b'
         modulus_n               : in  STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Modulus 'n'
         multiplication_result   : out STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Output result
-        done                    : out STD_LOGIC                        -- Done signal
+        done                    : out STD_LOGIC := '0'                       -- Done signal
     );
 end modular_multiplier;
 
@@ -21,8 +21,8 @@ architecture Behavioral of modular_multiplier is
     signal b_reg : STD_LOGIC_VECTOR(C_block_size-1 downto 0); -- Internal unsigned registers
     signal a_reg, n_reg, a_adder_input, result_reg : UNSIGNED(C_block_size - 1 downto 0);
     signal intermediate_result, intermediate_result2, intermediate_result3 : UNSIGNED(C_block_size downto 0);
-    signal b_msb : std_logic;
-    signal counter : unsigned(8 downto 0);
+    signal b_msb : std_logic := '0';
+    signal counter : unsigned(8 downto 0) := (others => '0');
 
 begin
     -- Process for shifting B at each clock cycle, b(i) is changed (implement counter?)

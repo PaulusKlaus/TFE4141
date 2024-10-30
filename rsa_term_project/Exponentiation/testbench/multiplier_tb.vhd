@@ -68,9 +68,9 @@ begin
     begin
         -- Initialize inputs
         reset_and_load_tb <= '1';   -- Load values
-        a_tb <= x"0000000000000000000000000000000000000000000000000000000000000002";  -- Input a = 2
-        b_tb <= x"0000000000000000000000000000000000000000000000000000000000000003";  -- Input b = 3
-        n_tb <= x"0000000000000000000000000000000000000000000000000000000000000005";  -- Modulus n = 5
+        a_tb <= x"000000000000000000000000000000000000000000000000000000000000000a";  -- Input a = 10
+        b_tb <= x"0000000000000000000000000000000000000000000000000000000000000007";  -- Input b = 7
+        n_tb <= x"000000000000000000000000000000000000000000000000000000000000000d";  -- Modulus n = 13
         wait for clk_period * 5;  -- Wait for some clock cycles
         reset_and_load_tb <= '0';
 
@@ -78,8 +78,8 @@ begin
         wait until done_tb = '1';
 
         -- Check result
-        assert result_tb = x"0000000000000000000000000000000000000000000000000000000000000001"
-            report "Test Failed for a=2, b=3, n=5" severity error;
+        assert result_tb = x"0000000000000000000000000000000000000000000000000000000000000005"
+            report "Test Failed for a=10, b=7, n=13" severity error;
             
             
                 -- Test with maximum values

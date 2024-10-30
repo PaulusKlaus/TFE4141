@@ -44,7 +44,7 @@ architecture Behavioral of exponentiation is
     signal state : state_type := INIT;
     signal exponent_index   : integer := 0; -- Index for the current bit of the exponent
     signal base_squared : STD_LOGIC := '0';
-    signal multiply_enable : STD_LOGIC := '0';
+    signal load_multiplier : STD_LOGIC := '0';
 
     
 begin
@@ -55,14 +55,14 @@ begin
     port map (
         -- Clock and Reset
         clk                 => clk,
-        reset_and_load      => multiply_enable,
+        reset_and_load      => load_multiplier,
         
         -- Data
-        factor_a    => load_a_reg,
-        factor_b   => load_b_reg,
-        modulus_n    => modulus_val,
+        factor_a                => load_a_reg,
+        factor_b                => load_b_reg,
+        modulus_n               => modulus_val,
         multiplication_result   => multiplication_result,
-        done => multiplication_done
+        done                    => multiplication_done
     );
 
     process(clk, reset_n)
@@ -72,12 +72,12 @@ begin
             base <= (others => '0');
             exponent <= (others => '0');
             modulus_val <= (others => '0');
-            exponentiation_result <= (others => '1'); -- Initialize result to 1
+            exponentiation_result <= (0 => '1', others => '0'); -- Initialize result to 1
             exponent_index <= 0;
             state <= INIT;
             valid_out <= '0';
             ready_in <= '1'; -- Ready for new input
-            multiply_enable <= '0';
+            load_multiplier <= '0';
             base_squared <= '0';
             
         elsif rising_edge(clk) then
@@ -88,21 +88,23 @@ begin
                         exponent <= key;           -- Assign exponent from key
                         modulus_val <= modulus;    -- Assign modulus
                         exponent_index <= 0;       -- Start from the least significant bit
-                        exponentiation_result <= (others => '1'); -- Initialize result to 1
+                        exponentiation_result <= (0 => '1', others => '0'); -- Initialize result to 1
                         ready_in <= '0'; -- Processing input
                         valid_out <= '0';
                         state <= PROCESSING;
                     end if;
 
                 when PROCESSING =>
-                    if exponent_index < C_block_size then -- Iterate over bits of exponent from right to left
+                    if exponent_index < 8 then -- Iterate over bits of exponent from right to left
                         -- Multiply result with base if exponent bit is 1
                         if exponent(exponent_index) = '1' then
                             load_a_reg <= exponentiation_result;
                             load_b_reg <= base;
-                            multiply_enable <= '1';
+                            load_multiplier <= '1';
                             base_squared <= '0'; -- Flag set to indicate normal multiplication
-                            state <= WAIT_MULTIPLY;                        
+                            if multiplication_done = '0' then   -- Wait for multiplier to load
+                                state <= WAIT_MULTIPLY;          
+                            end if;              
                         else -- Go directly to squaring
                             state <= SQUARE_BASE;
                         end if;
@@ -111,7 +113,7 @@ begin
                     end if;
                     
                 when WAIT_MULTIPLY =>
-                    multiply_enable <= '0';
+                    load_multiplier <= '0';
                     if multiplication_done = '1' then
                         if base_squared = '1' then
                             base <= multiplication_result; -- Update base with squared value
@@ -126,10 +128,12 @@ begin
                when SQUARE_BASE =>
                     load_a_reg <= base;
                     load_b_reg <= base;
-                    multiply_enable <= '1';
+                    load_multiplier <= '1';
                     base_squared <= '1'; -- Set flag to indicate squaring
                     exponent_index <= exponent_index + 1;
-                    state <= WAIT_MULTIPLY;
+                    if multiplication_done = '0' then   -- Wait for multiplier to reset
+                        state <= WAIT_MULTIPLY;
+                    end if;
 
                 when OUTPUT => -- not quite right
                     if(valid_out = '0') then
