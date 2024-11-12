@@ -2,10 +2,10 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.1 (win64) Build 5076996 Wed May 22 18:37:14 MDT 2024
--- Date        : Mon Oct 14 10:48:18 2024
+-- Date        : Tue Nov 12 12:20:05 2024
 -- Host        : LAB-PC running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/student/RebekkaAlve/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0_stub.vhdl
+--               c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0_stub.vhdl
 -- Design      : rsa_soc_rst_ps7_0_100M_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1

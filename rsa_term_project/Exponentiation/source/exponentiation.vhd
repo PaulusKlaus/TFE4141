@@ -23,7 +23,11 @@ entity exponentiation is
 
 		-- Utility
 		clk 		: in STD_LOGIC;
-		reset_n 	: in STD_LOGIC                 
+		reset_n 	: in STD_LOGIC;     
+		
+		-- Last message
+		msgin_last  : in STD_LOGIC;       
+		msgout_last : out STD_LOGIC     
 	);
 end exponentiation;
 
@@ -45,6 +49,8 @@ architecture Behavioral of exponentiation is
     signal exponent_index   : integer := 0; -- Index for the current bit of the exponent
     signal base_squared : STD_LOGIC := '0';
     signal load_multiplier : STD_LOGIC := '0';
+    
+    signal msgout_last_holder : STD_LOGIC := '0';
 
     
 begin
@@ -92,6 +98,7 @@ begin
                         ready_in <= '0'; -- Processing input
                         valid_out <= '0';
                         state <= PROCESSING;
+                        msgout_last_holder <= msgin_last;
                     end if;
 
                 when PROCESSING =>
@@ -135,13 +142,14 @@ begin
                         exponent_index <= exponent_index + 1;
                     end if;
 
-                when OUTPUT => -- not quite right
+                when OUTPUT =>   
                     if(valid_out = '0') then
-                        valid_out <= '1'; -- Indicate valid output
-                    end if;
-                    if (ready_out = '1') then
                         result <= exponentiation_result; -- Output the result
+                        msgout_last <= msgout_last_holder;
+                        valid_out <= '1'; -- Indicate valid output
+                    elsif (ready_out = '1') then
                         ready_in <= '1';
+                        valid_out <= '0';
                         state <= INIT; -- Reset to initial state after processing is complete
                     end if;
 

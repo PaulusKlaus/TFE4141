@@ -63,15 +63,15 @@ begin
 	-- Stimulus process
 	stimulus_process : process
 		-- Test vectors (using unsigned directly)
-		constant base1 : unsigned(C_block_size-1 downto 0) := to_unsigned(10, C_block_size);
+		constant base1 : unsigned(C_block_size-1 downto 0) := to_unsigned(5, C_block_size);
 		constant exponent1 : unsigned(C_block_size-1 downto 0) := to_unsigned(3, C_block_size);
-		constant modulus1 : unsigned(C_block_size-1 downto 0) := to_unsigned(121, C_block_size);
-		constant expected_result1 : unsigned(C_block_size-1 downto 0) := to_unsigned(32, C_block_size); -- (5^3 mod 13) = 8
+		constant modulus1 : unsigned(C_block_size-1 downto 0) := to_unsigned(13, C_block_size);
+		constant expected_result1 : unsigned(C_block_size-1 downto 0) := to_unsigned(8, C_block_size); -- (5^3 mod 13) = 8
 
---		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(6, C_block_size);
---		constant exponent2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size);
---		constant modulus2 : unsigned(C_block_size-1 downto 0) := to_unsigned(17, C_block_size);
---		constant expected_result2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size); -- (6^4 mod 17) = 4
+		constant base2 : unsigned(C_block_size-1 downto 0) := to_unsigned(6, C_block_size);
+		constant exponent2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size);
+		constant modulus2 : unsigned(C_block_size-1 downto 0) := to_unsigned(17, C_block_size);
+		constant expected_result2 : unsigned(C_block_size-1 downto 0) := to_unsigned(4, C_block_size); -- (6^4 mod 17) = 4
 
 	begin
 		-- Initial reset
@@ -94,20 +94,20 @@ begin
 		assert result = std_logic_vector(expected_result1)
 			report "Test case failed" severity error;
 
---		-- Test Case 2: (6^4 mod 17)
---		message <= std_logic_vector(base2);
---		key <= std_logic_vector(exponent2);
---		modulus <= std_logic_vector(modulus2);
---		valid_in <= '1';
---		wait for clk_period;
---		valid_in <= '0';
+		-- Test Case 2: (6^4 mod 17)
+		message <= std_logic_vector(base2);
+		key <= std_logic_vector(exponent2);
+		modulus <= std_logic_vector(modulus2);
+		valid_in <= '1';
+		wait for clk_period;
+		valid_in <= '0';
 
---		-- Wait for the result to be valid
---		wait until valid_out = '1';
---		wait for clk_period;
---		-- Check the result
---		assert result = std_logic_vector(expected_result2)
---			report "Test case 2 failed: (6^4 mod 17) should be 4" severity error;
+		-- Wait for the result to be valid
+		wait until valid_out = '1';
+		wait for clk_period;
+		-- Check the result
+		assert result = std_logic_vector(expected_result2)
+			report "Test case 2 failed: (6^4 mod 17) should be 4" severity error;
 
 		-- End simulation
 		wait;
