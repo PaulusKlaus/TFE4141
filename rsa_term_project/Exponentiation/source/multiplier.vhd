@@ -20,7 +20,7 @@ end modular_multiplier;
 architecture Behavioral of modular_multiplier is
     signal b_reg : STD_LOGIC_VECTOR(C_block_size-1 downto 0); -- Internal unsigned registers
     signal a_reg, n_reg, a_adder_input, result_reg : UNSIGNED(C_block_size - 1 downto 0);
-    signal intermediate_result, intermediate_result2, intermediate_result3 : UNSIGNED(C_block_size downto 0);
+    signal intermediate_result, intermediate_result_finito : UNSIGNED(C_block_size downto 0);
     signal b_msb : std_logic := '0';
     signal counter : unsigned(8 downto 0) := (others => '0');
 
@@ -44,10 +44,10 @@ begin
                     b_msb <= b_reg(C_block_size - 1);
                     b_reg <= b_reg(C_block_size-2 downto 0)&'0';
                     counter <= counter + 1;
-                    result_reg <= intermediate_result3(C_block_size - 1 downto 0); -- Very important that this update is clocked
+                    result_reg <= intermediate_result_finito(C_block_size - 1 downto 0); -- Very important that this update is clocked
                 else
                     done <= '1';
-                    multiplication_result <= STD_LOGIC_VECTOR(intermediate_result3(C_block_size - 1 downto 0)); -- If we use result_reg here, we get unbounded loop
+                    multiplication_result <= STD_LOGIC_VECTOR(intermediate_result_finito(C_block_size - 1 downto 0)); -- If we use result_reg here, we get unbounded loop
                 end if;
            end if;
        end if;
@@ -72,19 +72,12 @@ begin
     -- Process for mod n
     process(intermediate_result)
     begin
-        if intermediate_result > ('0' & n_reg) then
-            intermediate_result2 <= intermediate_result - ('0' & n_reg);
+        if intermediate_result > (n_reg & '0') then
+            intermediate_result_finito <= intermediate_result - (n_reg & '0');
+        elsif intermediate_result > ('0' & n_reg) then
+            intermediate_result_finito <= intermediate_result - ('0' & n_reg);
         else
-            intermediate_result2 <= intermediate_result;
-        end if;
-    end process;
-    
-    process(intermediate_result2)
-    begin
-        if intermediate_result2 > ('0' & n_reg) then
-            intermediate_result3 <= intermediate_result2 - ('0' & n_reg);
-        else
-            intermediate_result3 <= intermediate_result2;
+            intermediate_result_finito <= intermediate_result;
         end if;
     end process;
     
