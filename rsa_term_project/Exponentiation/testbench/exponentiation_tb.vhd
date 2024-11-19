@@ -24,6 +24,10 @@ architecture Behavioral of exponentiation_tb is
 	signal ready_out 	: STD_LOGIC := '1';
 	signal valid_out 	: STD_LOGIC;
 	
+	-- Last Message Control
+	signal msgin_last 	: STD_LOGIC := '0';
+	signal msgout_last 	: STD_LOGIC;
+	
 	-- Utility
 	signal clk 			: STD_LOGIC := '0';
 	signal reset_n 		: STD_LOGIC := '1';
@@ -46,6 +50,9 @@ begin
 
 			ready_out => ready_out,
 			valid_out => valid_out,
+
+            msgin_last => msgin_last,
+            msgout_last => msgout_last,
 
 			clk       => clk,
 			reset_n   => reset_n

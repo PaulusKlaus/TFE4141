@@ -36,6 +36,7 @@ architecture Behavioral of exponentiation is
     signal exponent    : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal modulus_val : STD_LOGIC_VECTOR(C_block_size-1 downto 0);
     signal exponentiation_result  : STD_LOGIC_VECTOR(C_block_size-1 downto 0) := (others => '0');
+    signal no_need_for_multiplication : STD_LOGIC := '0';
     
     -- Multiplication signals
     signal load_a_reg  : STD_LOGIC_VECTOR(C_block_size -1 downto 0);  -- Input 'a'
@@ -43,8 +44,12 @@ architecture Behavioral of exponentiation is
     signal multiplication_result  : STD_LOGIC_VECTOR(C_block_size-1 downto 0) := (others => '0');
     signal multiplication_done : STD_LOGIC := '0';
     
+    -- Multiplication for squaring base signals
+    signal square_base_result  : STD_LOGIC_VECTOR(C_block_size-1 downto 0) := (others => '0');
+    signal square_base_done : STD_LOGIC := '0';
+    
     -- FSM signals
-     type state_type is (INIT, WAIT_MULTIPLY, SQUARE_BASE, PROCESSING, OUTPUT);
+     type state_type is (INIT, WAIT_MULTIPLY, PROCESSING, OUTPUT);
     signal state : state_type := INIT;
     signal exponent_index   : integer := 0; -- Index for the current bit of the exponent
     signal base_squared : STD_LOGIC := '0';
@@ -69,6 +74,23 @@ begin
         modulus_n               => modulus_val,
         multiplication_result   => multiplication_result,
         done                    => multiplication_done
+    );
+    
+    u_modular_multiplier_for_squaring_base: entity work.modular_multiplier
+--        generic map (
+--            C_block_size        => C_block_size
+--        )
+    port map (
+        -- Clock and Reset
+        clk                 => clk,
+        reset_and_load      => load_multiplier,
+        
+        -- Data
+        factor_a                => base,
+        factor_b                => base,
+        modulus_n               => modulus_val,
+        multiplication_result   => square_base_result,
+        done                    => square_base_done
     );
 
     process(clk, reset_n)
@@ -105,15 +127,19 @@ begin
                     if exponent_index < C_block_size then -- Iterate over bits of exponent from right to left
                         -- Multiply result with base if exponent bit is 1
                         if exponent(exponent_index) = '1' then
+                            no_need_for_multiplication <= '0';
                             load_a_reg <= exponentiation_result;
                             load_b_reg <= base;
                             load_multiplier <= '1';
-                            base_squared <= '0'; -- Flag set to indicate normal multiplication
-                            if multiplication_done = '0' then   -- Wait for multiplier to load
+                            if multiplication_done = '0' and square_base_done = '0' then   -- Wait for multiplier to load
                                 state <= WAIT_MULTIPLY;          
-                            end if;              
+                            end if;
                         else -- Go directly to squaring
-                            state <= SQUARE_BASE;
+                            no_need_for_multiplication <= '1';
+                            load_multiplier <= '1';
+                            if square_base_done = '0' then   -- Wait for multiplier to load
+                                state <= WAIT_MULTIPLY;          
+                            end if;
                         end if;
                     else
                         state <= OUTPUT; -- Move to the output state
@@ -121,25 +147,15 @@ begin
                     
                 when WAIT_MULTIPLY =>
                     load_multiplier <= '0';
-                    if multiplication_done = '1' then
-                        if base_squared = '1' then
-                            base <= multiplication_result; -- Update base with squared value
-                            base_squared <= '0'; -- Reset flag
-                            state <= PROCESSING; -- Return to PROCESSING for the next bit
-                        else
-                            exponentiation_result <= multiplication_result; -- Update result
-                            state <= SQUARE_BASE; -- Now square the base
-                        end if;
-                    end if;
-               
-               when SQUARE_BASE =>
-                    load_a_reg <= base;
-                    load_b_reg <= base;
-                    load_multiplier <= '1';
-                    base_squared <= '1'; -- Set flag to indicate squaring
-                    if multiplication_done = '0' then   -- Wait for multiplier to reset
-                        state <= WAIT_MULTIPLY;
+                    if multiplication_done = '1' and square_base_done = '1' then
+                        base <= square_base_result;
+                        exponentiation_result <= multiplication_result; -- Update result
                         exponent_index <= exponent_index + 1;
+                        state <= PROCESSING;
+                    elsif no_need_for_multiplication = '1' and square_base_done = '1' then
+                        base <= square_base_result;
+                        exponent_index <= exponent_index + 1;
+                        state <= PROCESSING;
                     end if;
 
                 when OUTPUT =>   
