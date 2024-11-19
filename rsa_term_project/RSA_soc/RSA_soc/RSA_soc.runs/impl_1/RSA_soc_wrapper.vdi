@@ -1,0 +1,1044 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Tue Nov 19 15:07:54 2024
+# Process ID: 14844
+# Current directory: C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1
+# Command line: vivado.exe -log RSA_soc_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source RSA_soc_wrapper.tcl -notrace
+# Log file: C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper.vdi
+# Journal file: C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1\vivado.jou
+# Running On        :LAB-PC
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :Intel(R) Xeon(R) CPU E3-1240 v5 @ 3.50GHz
+# CPU Frequency     :3504 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :34288 MB
+# Swap memory       :5100 MB
+# Total Virtual     :39388 MB
+# Available Virtual :27398 MB
+#-----------------------------------------------------------
+source RSA_soc_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 492.020 ; gain = 201.617
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_accelerator/IP'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.cache/ip 
+Command: link_design -top RSA_soc_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Device 21-9227] Part: xc7z020clg400-1 does not have CEAM library.
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/rsa_soc_axi_smc_0.dcp' for cell 'rsa_soc_i/axi_smc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_processing_system7_0_0/rsa_soc_processing_system7_0_0.dcp' for cell 'rsa_soc_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0.dcp' for cell 'rsa_soc_i/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_xbar_0/rsa_soc_xbar_0.dcp' for cell 'rsa_soc_i/ps7_0_axi_periph/xbar'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_auto_pc_0/rsa_soc_auto_pc_0.dcp' for cell 'rsa_soc_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/rsa_soc_rsa_acc_0.dcp' for cell 'rsa_soc_i/rsa/rsa_acc'
+INFO: [Project 1-454] Reading design checkpoint 'c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0.dcp' for cell 'rsa_soc_i/rsa/rsa_dma'
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.741 . Memory (MB): peak = 1030.484 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1164 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2024.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/src/PYNQ-Z1_C.xdc] for cell 'rsa_soc_i/rsa/rsa_acc/U0'
+INFO: [Vivado 12-2286] Implicit search of objects for pattern 'clk' matched to 'net' objects. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/src/PYNQ-Z1_C.xdc:199]
+Resolution: To avoid ambiguous patterns, provide proper objects using get commands e.g. [get_nets xyz].
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_acc_0/src/PYNQ-Z1_C.xdc] for cell 'rsa_soc_i/rsa/rsa_acc/U0'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0.xdc] for cell 'rsa_soc_i/rsa/rsa_dma/U0'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0.xdc:56]
+WARNING: [Vivado_Tcl 4-919] Waiver ID 'CDC-1' -from list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0.xdc:61]
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0.xdc] for cell 'rsa_soc_i/rsa/rsa_dma/U0'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_processing_system7_0_0/rsa_soc_processing_system7_0_0.xdc] for cell 'rsa_soc_i/processing_system7_0/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_processing_system7_0_0/rsa_soc_processing_system7_0_0.xdc] for cell 'rsa_soc_i/processing_system7_0/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0_board.xdc] for cell 'rsa_soc_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0_board.xdc] for cell 'rsa_soc_i/rst_ps7_0_100M/U0'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0.xdc] for cell 'rsa_soc_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rst_ps7_0_100M_0/rsa_soc_rst_ps7_0_100M_0.xdc] for cell 'rsa_soc_i/rst_ps7_0_100M/U0'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_1/bd_ae75_psr_aclk_0_board.xdc] for cell 'rsa_soc_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_1/bd_ae75_psr_aclk_0_board.xdc] for cell 'rsa_soc_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_1/bd_ae75_psr_aclk_0.xdc] for cell 'rsa_soc_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_1/bd_ae75_psr_aclk_0.xdc] for cell 'rsa_soc_i/axi_smc/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s00_nodes/s00_ar_node/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:49]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:55]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:59]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:63]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:66]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:70]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:73]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:76]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:82]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:88]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:91]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:94]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:97]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:100]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:104]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:107]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:110]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:113]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:116]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:119]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:122]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:125]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:128]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:131]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:134]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:137]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:140]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:143]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:146]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:149]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:152]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:155]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:161]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:164]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:167]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:171]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:174]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:178]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:181]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc:184]
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_11/bd_ae75_sarn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s00_nodes/s00_ar_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s00_nodes/s00_r_node/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:49]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:55]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:59]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:63]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:66]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:70]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:73]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:76]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:82]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:88]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:91]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:94]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:97]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:100]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:104]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:107]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:110]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:113]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:116]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:119]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:122]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:125]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:128]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:131]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:134]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:137]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:149]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:158]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-10' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:161]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:164]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:167]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:171]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:174]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:178]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:181]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-13' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc:184]
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_12/bd_ae75_srn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s00_nodes/s00_r_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s01_nodes/s01_aw_node/inst'
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:49]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:52]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:55]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:59]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:63]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:66]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:70]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:73]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:76]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:79]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-1' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:82]
+INFO: [Common 17-14] Message 'Vivado 12-180' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:85]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-4' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:88]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:91]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:94]
+WARNING: [Vivado_Tcl 4-921] Waiver ID 'CDC-2' -to list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:97]
+INFO: [Common 17-14] Message 'Vivado_Tcl 4-921' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc:97]
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_17/bd_ae75_sawn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s01_nodes/s01_aw_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_18/bd_ae75_swn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s01_nodes/s01_w_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_18/bd_ae75_swn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s01_nodes/s01_w_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_19/bd_ae75_sbn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s01_nodes/s01_b_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_19/bd_ae75_sbn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/s01_nodes/s01_b_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_21/bd_ae75_m00arn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_ar_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_21/bd_ae75_m00arn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_ar_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_22/bd_ae75_m00rn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_r_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_22/bd_ae75_m00rn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_r_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_23/bd_ae75_m00awn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_aw_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_23/bd_ae75_m00awn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_aw_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_24/bd_ae75_m00wn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_w_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_24/bd_ae75_m00wn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_w_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_25/bd_ae75_m00bn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_b_node/inst'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/bd_0/ip/ip_25/bd_ae75_m00bn_0_clocks.xdc] for cell 'rsa_soc_i/axi_smc/inst/m00_nodes/m00_b_node/inst'
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/smartconnect.xdc] for cell 'rsa_soc_i/axi_smc/inst'
+WARNING: [Vivado_Tcl 4-919] Waiver ID 'CDC-1' -from list should not be empty. [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/smartconnect.xdc:1]
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_axi_smc_0/smartconnect.xdc] for cell 'rsa_soc_i/axi_smc/inst'
+Parsing XDC File [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/Master_constraints/PYNQ-Z1_C.xdc]
+WARNING: [Vivado 12-663] port, pin or net 'clk' not found. [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/Master_constraints/PYNQ-Z1_C.xdc:199]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects clk'. [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/Master_constraints/PYNQ-Z1_C.xdc:199]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+Finished Parsing XDC File [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/Master_constraints/PYNQ-Z1_C.xdc]
+Parsing XDC File [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/rsa_soc_ooc.xdc]
+WARNING: [Vivado 12-508] No pins matched 'processing_system7_0/FCLK_CLK0'. [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/rsa_soc_ooc.xdc:9]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_pins processing_system7_0/FCLK_CLK0]'. [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/rsa_soc_ooc.xdc:9]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+Finished Parsing XDC File [C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/rsa_soc_ooc.xdc]
+Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0_clocks.xdc] for cell 'rsa_soc_i/rsa/rsa_dma/U0'
+Finished Parsing XDC File [c:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/boards/ip/rsa_soc_rsa_dma_0/rsa_soc_rsa_dma_0_clocks.xdc] for cell 'rsa_soc_i/rsa/rsa_dma/U0'
+INFO: [Project 1-1714] 44 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-1687] 460 scoped IP constraints or related sub-commands were skipped due to synthesis logic optimizations usually triggered by constant connectivity or unconnected output pins. To review the skipped constraints and messages, run the command 'set_param netlist.IPMsgFiltering false' before opening the design.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1805.473 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 118 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 111 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 6 instances
+
+23 Infos, 105 Warnings, 2 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:26 ; elapsed = 00:01:15 . Memory (MB): peak = 1805.473 ; gain = 1257.363
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1805.473 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 11df16919
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.974 . Memory (MB): peak = 1805.473 ; gain = 0.000
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 11df16919
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2157.840 ; gain = 0.000
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 11df16919
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 2157.840 ; gain = 0.000
+Phase 1 Initialization | Checksum: 11df16919
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 2157.840 ; gain = 0.000
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Timer Update
+Phase 2.1 Timer Update | Checksum: 11df16919
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.572 . Memory (MB): peak = 2164.160 ; gain = 6.320
+
+Phase 2.2 Timing Data Collection
+Phase 2.2 Timing Data Collection | Checksum: 11df16919
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.619 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Phase 2 Timer Update And Timing Data Collection | Checksum: 11df16919
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.624 . Memory (MB): peak = 2164.160 ; gain = 6.320
+
+Phase 3 Retarget
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-1566] Pulled 5 inverters resulting in an inversion of 84 pins
+INFO: [Opt 31-138] Pushed 14 inverter(s) to 85 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 10e295458
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Retarget | Checksum: 10e295458
+INFO: [Opt 31-389] Phase Retarget created 47 cells and removed 133 cells
+INFO: [Opt 31-1021] In phase Retarget, 40 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 4 Constant propagation | Checksum: 1d79da16c
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Constant propagation | Checksum: 1d79da16c
+INFO: [Opt 31-389] Phase Constant propagation created 30 cells and removed 236 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 40 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+Phase 5 Sweep | Checksum: 14db859e7
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Sweep | Checksum: 14db859e7
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 182 cells
+INFO: [Opt 31-1021] In phase Sweep, 51 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 14db859e7
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2164.160 ; gain = 6.320
+BUFG optimization | Checksum: 14db859e7
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 14db859e7
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Shift Register Optimization | Checksum: 14db859e7
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+INFO: [Opt 31-1566] Pulled 1 inverters resulting in an inversion of 1 pins
+Phase 8 Post Processing Netlist | Checksum: 122727810
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Post Processing Netlist | Checksum: 122727810
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 1 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 40 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 15a0f34f6
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2164.160 ; gain = 6.320
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 2164.160 ; gain = 0.000
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 15a0f34f6
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Phase 9 Finalization | Checksum: 15a0f34f6
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2164.160 ; gain = 6.320
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              47  |             133  |                                             40  |
+|  Constant propagation         |              30  |             236  |                                             40  |
+|  Sweep                        |               0  |             182  |                                             51  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               1  |                                             40  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 15a0f34f6
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2164.160 ; gain = 6.320
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 2 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 3 newly gated: 0 Total Ports: 4
+Ending PowerOpt Patch Enables Task | Checksum: 1f16ab90b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Ending Power Optimization Task | Checksum: 1f16ab90b
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 2327.621 ; gain = 163.461
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 1f16ab90b
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 1f918ee37
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 2327.621 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+52 Infos, 105 Warnings, 2 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:13 . Memory (MB): peak = 2327.621 ; gain = 522.148
+INFO: [Vivado 12-24828] Executing command : report_drc -file RSA_soc_wrapper_drc_opted.rpt -pb RSA_soc_wrapper_drc_opted.pb -rpx RSA_soc_wrapper_drc_opted.rpx
+Command: report_drc -file RSA_soc_wrapper_drc_opted.rpt -pb RSA_soc_wrapper_drc_opted.pb -rpx RSA_soc_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Writing XDEF routing.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.068 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.104 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.154 . Memory (MB): peak = 2327.621 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_opt.dcp' has been generated.
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 11420dac3
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 9261a03d
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: b2da667c
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: b2da667c
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: b2da667c
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 16bf2d131
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: cc730406
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:11 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: d40e09c0
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:11 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 2.4 Global Placement Core
+
+Phase 2.4.1 UpdateTiming Before Physical Synthesis
+Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: 1a1490774
+
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:26 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 2.4.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 15 LUTNM shape to break, 527 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 7, two critical 8, total 15, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 214 nets or LUTs. Breaked 15 LUTs, combined 199 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1401] No candidate cells found for Shift Register optimization.
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |           15  |            199  |                   214  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |           15  |            199  |                   214  |           0  |           9  |  00:00:01  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.4.2 Physical Synthesis In Placer | Checksum: 1e0da67e0
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:29 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 2.4 Global Placement Core | Checksum: 1f5927f9c
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:29 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 1f5927f9c
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:29 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1594d513f
+
+Time (s): cpu = 00:00:51 ; elapsed = 00:00:31 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 16d615ff8
+
+Time (s): cpu = 00:00:57 ; elapsed = 00:00:35 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 11ff9f622
+
+Time (s): cpu = 00:00:57 ; elapsed = 00:00:35 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 13c6d632f
+
+Time (s): cpu = 00:00:57 ; elapsed = 00:00:35 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 1e9ae8812
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:38 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 187ff2980
+
+Time (s): cpu = 00:01:10 ; elapsed = 00:00:46 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 1592477ca
+
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 1222a4357
+
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: 1222a4357
+
+Time (s): cpu = 00:01:11 ; elapsed = 00:00:47 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 22dd32945
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.688 | TNS=-20.712 |
+Phase 1 Physical Synthesis Initialization | Checksum: 29822773b
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.898 . Memory (MB): peak = 2327.621 ; gain = 0.000
+INFO: [Place 46-33] Processed net rsa_soc_i/rsa/rsa_acc/U0/u_rsa_regio/reset_n_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-33] Processed net rsa_soc_i/rsa/rsa_acc/U0/u_rsa_core/i_exponentiation/load_multiplier_reg_n_0, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-56] BUFG insertion identified 2 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 2, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 21b379bfd
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: 22dd32945
+
+Time (s): cpu = 00:01:20 ; elapsed = 00:00:53 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.075. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 22754641d
+
+Time (s): cpu = 00:01:58 ; elapsed = 00:01:28 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Time (s): cpu = 00:01:58 ; elapsed = 00:01:28 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 4.1 Post Commit Optimization | Checksum: 22754641d
+
+Time (s): cpu = 00:01:58 ; elapsed = 00:01:28 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 22754641d
+
+Time (s): cpu = 00:01:58 ; elapsed = 00:01:28 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                4x4|
+|___________|___________________|___________________|
+|      South|                1x1|                2x2|
+|___________|___________________|___________________|
+|       East|                2x2|                8x8|
+|___________|___________________|___________________|
+|       West|                1x1|                2x2|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 22754641d
+
+Time (s): cpu = 00:01:59 ; elapsed = 00:01:28 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 4.3 Placer Reporting | Checksum: 22754641d
+
+Time (s): cpu = 00:01:59 ; elapsed = 00:01:28 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 2327.621 ; gain = 0.000
+
+Time (s): cpu = 00:01:59 ; elapsed = 00:01:29 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1a4f0d2ab
+
+Time (s): cpu = 00:01:59 ; elapsed = 00:01:29 . Memory (MB): peak = 2327.621 ; gain = 0.000
+Ending Placer Task | Checksum: a6b59cec
+
+Time (s): cpu = 00:01:59 ; elapsed = 00:01:29 . Memory (MB): peak = 2327.621 ; gain = 0.000
+97 Infos, 105 Warnings, 2 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:02:03 ; elapsed = 00:01:31 . Memory (MB): peak = 2327.621 ; gain = 0.000
+INFO: [Vivado 12-24838] Running report commands "report_control_sets, report_io, report_utilization" in parallel.
+Running report generation with 2 threads.
+INFO: [Vivado 12-24828] Executing command : report_io -file RSA_soc_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.081 . Memory (MB): peak = 2327.621 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_control_sets -verbose -file RSA_soc_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.078 . Memory (MB): peak = 2327.621 ; gain = 0.000
+INFO: [Vivado 12-24828] Executing command : report_utilization -file RSA_soc_wrapper_utilization_placed.rpt -pb RSA_soc_wrapper_utilization_placed.pb
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.126 . Memory (MB): peak = 2344.141 ; gain = 16.520
+Wrote PlaceDB: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2344.195 ; gain = 16.574
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2344.195 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 2344.195 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2344.195 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 2344.195 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2344.195 ; gain = 16.574
+INFO: [Common 17-1381] The checkpoint 'C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_placed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 2344.195 ; gain = 16.574
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:03 . Memory (MB): peak = 2346.406 ; gain = 2.211
+INFO: [Vivado_Tcl 4-2279] Estimated Timing Summary | WNS= 0.075 | TNS= 0.000 | 
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. All physical synthesis setup optimizations will be skipped.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+108 Infos, 105 Warnings, 2 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.121 . Memory (MB): peak = 2390.152 ; gain = 25.113
+Wrote PlaceDB: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2392.473 ; gain = 27.434
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2392.473 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 2392.473 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 2392.473 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2392.473 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 2392.473 ; gain = 27.434
+INFO: [Common 17-1381] The checkpoint 'C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: 5788f863 ConstDB: 0 ShapeSum: 39333199 RouteDB: 15f972f0
+Post Restoration Checksum: NetGraph: f0dd0592 | NumContArr: 6e92e3c9 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 2e4c1de95
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:29 . Memory (MB): peak = 2512.980 ; gain = 114.383
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 2e4c1de95
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:29 . Memory (MB): peak = 2512.980 ; gain = 114.383
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 2e4c1de95
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:29 . Memory (MB): peak = 2512.980 ; gain = 114.383
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 252382ff7
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:34 . Memory (MB): peak = 2549.023 ; gain = 150.426
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.274  | TNS=0.000  | WHS=-0.350 | THS=-329.764|
+
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 18834
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 18834
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 27e42290e
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:37 . Memory (MB): peak = 2549.023 ; gain = 150.426
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 27e42290e
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:37 . Memory (MB): peak = 2549.023 ; gain = 150.426
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 1da057ab1
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:39 . Memory (MB): peak = 2563.215 ; gain = 164.617
+Phase 4 Initial Routing | Checksum: 1da057ab1
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:39 . Memory (MB): peak = 2563.215 ; gain = 164.617
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 3909
+ Number of Nodes with overlaps = 700
+ Number of Nodes with overlaps = 152
+ Number of Nodes with overlaps = 28
+ Number of Nodes with overlaps = 9
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.794 | TNS=-93.605| WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Global Iteration 0 | Checksum: 2e747805f
+
+Time (s): cpu = 00:02:11 ; elapsed = 00:01:13 . Memory (MB): peak = 2593.625 ; gain = 195.027
+
+Phase 5.2 Global Iteration 1
+ Number of Nodes with overlaps = 1220
+ Number of Nodes with overlaps = 732
+ Number of Nodes with overlaps = 182
+ Number of Nodes with overlaps = 66
+ Number of Nodes with overlaps = 37
+ Number of Nodes with overlaps = 26
+ Number of Nodes with overlaps = 10
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.492 | TNS=-21.251| WHS=N/A    | THS=N/A    |
+
+Phase 5.2 Global Iteration 1 | Checksum: 1df1761cc
+
+Time (s): cpu = 00:02:59 ; elapsed = 00:01:39 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 5.3 Global Iteration 2
+ Number of Nodes with overlaps = 1025
+ Number of Nodes with overlaps = 444
+ Number of Nodes with overlaps = 183
+ Number of Nodes with overlaps = 73
+ Number of Nodes with overlaps = 35
+ Number of Nodes with overlaps = 57
+ Number of Nodes with overlaps = 27
+ Number of Nodes with overlaps = 20
+ Number of Nodes with overlaps = 7
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.590 | TNS=-34.714| WHS=N/A    | THS=N/A    |
+
+Phase 5.3 Global Iteration 2 | Checksum: 237f600a7
+
+Time (s): cpu = 00:03:51 ; elapsed = 00:02:11 . Memory (MB): peak = 2600.145 ; gain = 201.547
+Phase 5 Rip-up And Reroute | Checksum: 237f600a7
+
+Time (s): cpu = 00:03:51 ; elapsed = 00:02:11 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 25f0beb9d
+
+Time (s): cpu = 00:03:54 ; elapsed = 00:02:12 . Memory (MB): peak = 2600.145 ; gain = 201.547
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.422 | TNS=-11.134| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 6.1 Delay CleanUp | Checksum: 248656f21
+
+Time (s): cpu = 00:03:54 ; elapsed = 00:02:12 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 248656f21
+
+Time (s): cpu = 00:03:54 ; elapsed = 00:02:12 . Memory (MB): peak = 2600.145 ; gain = 201.547
+Phase 6 Delay and Skew Optimization | Checksum: 248656f21
+
+Time (s): cpu = 00:03:54 ; elapsed = 00:02:12 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.422 | TNS=-11.070| WHS=0.011  | THS=0.000  |
+
+Phase 7.1 Hold Fix Iter | Checksum: 1e66ebc6e
+
+Time (s): cpu = 00:03:57 ; elapsed = 00:02:13 . Memory (MB): peak = 2600.145 ; gain = 201.547
+Phase 7 Post Hold Fix | Checksum: 1e66ebc6e
+
+Time (s): cpu = 00:03:57 ; elapsed = 00:02:13 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 5.91364 %
+  Global Horizontal Routing Utilization  = 6.52054 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 84.6847%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 81.0811%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 95.5882%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_R_X41Y46 -> INT_R_X41Y46
+   INT_L_X52Y44 -> INT_L_X52Y44
+   INT_R_X37Y42 -> INT_R_X37Y42
+West Dir 1x1 Area, Max Cong = 79.4118%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 8 Route finalize | Checksum: 1e66ebc6e
+
+Time (s): cpu = 00:03:57 ; elapsed = 00:02:13 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 1e66ebc6e
+
+Time (s): cpu = 00:03:57 ; elapsed = 00:02:13 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: 23984cc9d
+
+Time (s): cpu = 00:04:00 ; elapsed = 00:02:15 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 11 Post Process Routing
+Phase 11 Post Process Routing | Checksum: 23984cc9d
+
+Time (s): cpu = 00:04:00 ; elapsed = 00:02:15 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Phase 12 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-0.422 | TNS=-11.070| WHS=0.011  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 12 Post Router Timing | Checksum: 23984cc9d
+
+Time (s): cpu = 00:04:00 ; elapsed = 00:02:15 . Memory (MB): peak = 2600.145 ; gain = 201.547
+Total Elapsed time in route_design: 134.584 secs
+
+Phase 13 Post-Route Event Processing
+Phase 13 Post-Route Event Processing | Checksum: 19cfcb210
+
+Time (s): cpu = 00:04:00 ; elapsed = 00:02:15 . Memory (MB): peak = 2600.145 ; gain = 201.547
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 19cfcb210
+
+Time (s): cpu = 00:04:00 ; elapsed = 00:02:15 . Memory (MB): peak = 2600.145 ; gain = 201.547
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+124 Infos, 106 Warnings, 2 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:04:04 ; elapsed = 00:03:24 . Memory (MB): peak = 2600.145 ; gain = 207.672
+INFO: [Vivado 12-24828] Executing command : report_drc -file RSA_soc_wrapper_drc_routed.rpt -pb RSA_soc_wrapper_drc_routed.pb -rpx RSA_soc_wrapper_drc_routed.rpx
+Command: report_drc -file RSA_soc_wrapper_drc_routed.rpt -pb RSA_soc_wrapper_drc_routed.pb -rpx RSA_soc_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [Vivado 12-24828] Executing command : report_methodology -file RSA_soc_wrapper_methodology_drc_routed.rpt -pb RSA_soc_wrapper_methodology_drc_routed.pb -rpx RSA_soc_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file RSA_soc_wrapper_methodology_drc_routed.rpt -pb RSA_soc_wrapper_methodology_drc_routed.pb -rpx RSA_soc_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 2 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+report_methodology: Time (s): cpu = 00:00:14 ; elapsed = 00:00:08 . Memory (MB): peak = 2600.965 ; gain = 0.820
+INFO: [Vivado 12-24828] Executing command : report_timing_summary -max_paths 10 -report_unconstrained -file RSA_soc_wrapper_timing_summary_routed.rpt -pb RSA_soc_wrapper_timing_summary_routed.pb -rpx RSA_soc_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+INFO: [Vivado 12-24838] Running report commands "report_incremental_reuse, report_route_status" in parallel.
+Running report generation with 2 threads.
+INFO: [Vivado 12-24828] Executing command : report_incremental_reuse -file RSA_soc_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [Vivado 12-24828] Executing command : report_route_status -file RSA_soc_wrapper_route_status.rpt -pb RSA_soc_wrapper_route_status.pb
+INFO: [Vivado 12-24828] Executing command : report_power -file RSA_soc_wrapper_power_routed.rpt -pb RSA_soc_wrapper_power_summary_routed.pb -rpx RSA_soc_wrapper_power_routed.rpx
+Command: report_power -file RSA_soc_wrapper_power_routed.rpt -pb RSA_soc_wrapper_power_summary_routed.pb -rpx RSA_soc_wrapper_power_routed.rpx
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+141 Infos, 107 Warnings, 3 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [Vivado 12-24828] Executing command : report_clock_utilization -file RSA_soc_wrapper_clock_utilization_routed.rpt
+WARNING: [Device 21-9320] Failed to find the Oracle tile group with name 'HSR_BOUNDARY_TOP'. This is required for Clock regions and Virtual grid.
+WARNING: [Device 21-2174] Failed to initialize Virtual grid.
+INFO: [Vivado 12-24828] Executing command : report_bus_skew -warn_on_violation -file RSA_soc_wrapper_bus_skew_routed.rpt -pb RSA_soc_wrapper_bus_skew_routed.pb -rpx RSA_soc_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+generate_parallel_reports: Time (s): cpu = 00:00:36 ; elapsed = 00:00:20 . Memory (MB): peak = 2636.574 ; gain = 36.430
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.109 . Memory (MB): peak = 2670.668 ; gain = 19.621
+Wrote PlaceDB: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2670.668 ; gain = 19.594
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2670.668 ; gain = 0.000
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.384 . Memory (MB): peak = 2670.668 ; gain = 0.000
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.033 . Memory (MB): peak = 2670.668 ; gain = 0.000
+Wrote Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 2670.668 ; gain = 0.000
+Write Physdb Complete: Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 2670.668 ; gain = 19.594
+INFO: [Common 17-1381] The checkpoint 'C:/Users/student/Documents/GitHub/TFE4141/rsa_term_project/RSA_soc/RSA_soc/RSA_soc.runs/impl_1/RSA_soc_wrapper_routed.dcp' has been generated.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/rsa/rsa_dma/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to auto. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/rsa/rsa_dma/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst block.
+INFO: [Memdata 28-208] The XPM instance: <rsa_soc_i/rsa/rsa_dma/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst> is part of IP: <rsa_soc_i/rsa/rsa_dma>. This XPM instance will be excluded from the .mmi because updatemem is prohibited from making changes to an XPM that is part of an IP.
+INFO: [Memdata 28-208] The XPM instance: <rsa_soc_i/rsa/rsa_dma/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst> is part of IP: <rsa_soc_i/rsa/rsa_dma>. This XPM instance will be excluded from the .mmi because updatemem is prohibited from making changes to an XPM that is part of an IP.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/s01_nodes/s01_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/s01_nodes/s01_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/s01_nodes/s01_w_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/s01_nodes/s01_w_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/s01_nodes/s01_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/s01_nodes/s01_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/s01_nodes/s01_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/s01_nodes/s01_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[1].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block rsa_soc_i/axi_smc/inst/m00_nodes/m00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the rsa_soc_i/axi_smc/inst/m00_nodes/m00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+Command: write_bitstream -force RSA_soc_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [DRC REQP-181] writefirst: Synchronous clocking is detected for BRAM (rsa_soc_i/rsa/rsa_dma/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg) in SDP mode with WRITE_FIRST write-mode. This is the preferred mode for best power characteristics, however it may exhibit address collisions if the same address appears on both read and write ports resulting in unknown or corrupted read data. It is suggested to confirm via simulation that an address collision never occurs and if so it is suggested to try and avoid this situation. If address collisions cannot be avoided, the write-mode may be set to READ_FIRST which guarantees that the read data is the prior contents of the memory at the cost of additional power in the design. See the FPGA Memory Resources User Guide for additional information.
+INFO: [DRC REQP-181] writefirst: Synchronous clocking is detected for BRAM (rsa_soc_i/rsa/rsa_dma/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/xpm_fifo_instance.xpm_fifo_sync_inst/xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg) in SDP mode with WRITE_FIRST write-mode. This is the preferred mode for best power characteristics, however it may exhibit address collisions if the same address appears on both read and write ports resulting in unknown or corrupted read data. It is suggested to confirm via simulation that an address collision never occurs and if so it is suggested to try and avoid this situation. If address collisions cannot be avoided, the write-mode may be set to READ_FIRST which guarantees that the read data is the prior contents of the memory at the cost of additional power in the design. See the FPGA Memory Resources User Guide for additional information.
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 2 Advisories
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./RSA_soc_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT device. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-83] Releasing license: Implementation
+175 Infos, 109 Warnings, 3 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:29 ; elapsed = 00:02:01 . Memory (MB): peak = 3123.336 ; gain = 452.668
+INFO: [Common 17-206] Exiting Vivado at Tue Nov 19 15:17:18 2024...
