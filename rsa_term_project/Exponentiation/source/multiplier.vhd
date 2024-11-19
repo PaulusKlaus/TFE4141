@@ -58,7 +58,7 @@ begin
     begin
         if b_msb='1' then
             a_adder_input <= a_reg;
-        else
+        elsen
             a_adder_input <= (others => '0');
         end if;
     end process;
