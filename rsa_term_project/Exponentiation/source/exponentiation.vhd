@@ -159,7 +159,7 @@ begin
                     end if;
 
                 when OUTPUT =>   
-                    if(valid_out = '0') then
+                    if (valid_out = '0') then
                         result <= exponentiation_result; -- Output the result
                         msgout_last <= msgout_last_holder;
                         valid_out <= '1'; -- Indicate valid output
