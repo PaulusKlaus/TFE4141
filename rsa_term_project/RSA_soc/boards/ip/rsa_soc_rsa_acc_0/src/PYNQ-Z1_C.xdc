@@ -196,4 +196,5 @@
 
 #create_clock -period 12.000 -name clk -waveform {0.000 6.000} clk
 
-create_clock -period 13.500 -name clk -waveform {0.000 6.750} clk
+create_clock -period 15.000 -name clk -waveform {0.000 7.500} clk
+

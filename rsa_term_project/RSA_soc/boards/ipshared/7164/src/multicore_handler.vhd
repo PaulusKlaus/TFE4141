@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity multicore_handler is
     Generic (
 		C_block_size  : integer := 256;
-		NUM_CORES     : integer := 9
+		NUM_CORES     : integer := 6
 	);
 	Port (
 		-- Input control
@@ -90,32 +90,27 @@ begin
         elsif rising_edge(clk) then
             case state is
                 when FILLING_CORES =>
-                    if selected_core = number_of_cores_to_use then
+                    if intermediate_msgin_last = '1' then
+                        intermediate_msgin_last <= '0';
+                        number_of_cores_to_use <= selected_core;
+                    elsif selected_core = number_of_cores_to_use then
                         selected_core <= 0;
                         state <= EMPTYING_CORES;
                     else
-                        if msgin_last = '1' then
-                            number_of_cores_to_use <= selected_core + 1;
-                        end if;
                         ready_in <= '1';
                         state <= INPUT;
                     end if;
                     
                 when INPUT =>
-                    if valid_in = '1' and core_ready_in(selected_core) = '1' then
+                    if valid_in = '1' and core_ready_in(selected_core) = '1' and ready_in = '1' then
                         ready_in <= '0';
                         intermediate_message <= message;
                         intermediate_msgin_last <= msgin_last;
                         core_valid_in(selected_core) <= '1';
-                    elsif ready_in = '0' then
+                    elsif ready_in = '0' and core_ready_in(selected_core) = '0' then
                         core_valid_in(selected_core) <= '0';
                         selected_core <= (selected_core + 1);
-                        if selected_core = number_of_cores_to_use then
-                            selected_core <= 0;
-                            state <= EMPTYING_CORES;
-                        else
-                            state <= FILLING_CORES;
-                        end if;
+                        state <= FILLING_CORES;
                     end if;
                     
                 when EMPTYING_CORES =>
@@ -123,9 +118,11 @@ begin
                         selected_core <= 0;
                         number_of_cores_to_use <= NUM_CORES;
                         state <= FILLING_CORES;
+                    else
+                        core_ready_out(selected_core) <= '1';
+                        state <= OUTPUT;
                     end if;
-                    core_ready_out(selected_core) <= '1';
-                    state <= OUTPUT;
+
                     
                 when OUTPUT =>
                     if core_valid_out(selected_core) = '1' then
@@ -136,13 +133,7 @@ begin
                         valid_out <= '0';
                         core_ready_out(selected_core) <= '0';
                         selected_core <= (selected_core + 1);
-                        if selected_core = number_of_cores_to_use - 1 then
-                            selected_core <= 0;
-                            number_of_cores_to_use <= NUM_CORES;
-                            state <= FILLING_CORES;
-                        else
-                            state <= EMPTYING_CORES;
-                        end if;
+                        state <= EMPTYING_CORES;
                     end if;
                     
             end case;
